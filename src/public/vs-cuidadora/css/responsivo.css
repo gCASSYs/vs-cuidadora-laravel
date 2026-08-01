@@ -1,0 +1,1409 @@
+@media (max-width:1500px){
+    
+    .padrao{
+        padding: 0;
+    }
+
+    .ava-cards .slick-prev,
+    .ava-cards .slick-next{
+        top: 328px;
+    }
+
+    .ava-cards .slick-prev{
+        left: 36px;
+        z-index: 1;
+    }
+
+    .ava-cards .slick-next{
+        right: 67px;
+    }
+
+    .ava-cards .slick-prev:before, .ava-cards .slick-next:before{
+        font-size: 50px;
+    }
+
+    .local-titulo{
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 1200px){
+    .padrao{
+        padding: 0;
+    }
+
+    .banner a{
+        font-size: 30px;
+        top: 58%;
+        left: 7%;
+    }
+
+    /* Alteração da Gabriele: mantém o espaçamento uniforme do grid de serviços em telas menores */
+    .ser-cards{
+        gap: 28px;
+    }
+
+    .avaliações .ava-cards article {
+        height: 335px;
+    }
+
+    .ava-cards .slick-prev,
+    .ava-cards .slick-next {
+        top: 388px;
+        right: 50px;
+    }
+
+    .ava-cards .slick-prev{
+        left: 16px;
+    }
+
+    .ava-cards .slick-prev:before, 
+    .ava-cards .slick-next:before {
+        font-size: 45px;
+    }
+
+    .faq-cards details{
+        width: 90%;
+    }
+
+    .local-titulo{
+        margin: 0 10px;
+    }
+}
+
+@media not all and (max-width: 768px){
+    .abrir-menu,
+    .fechar-menu{
+        display: none;
+    }
+}
+
+@media (max-width: 768px){
+
+    /* IDEIA É CRIAR UMA UI PRÓPRIA */
+
+    /* QUEBRA DE LINHA PARA MOBILE - !AJUSTAR MEDIDAS!
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin: 50px auto; 
+    */
+
+    .parallax h3{
+        font-size: 40px;
+        -webkit-text-stroke: .5px var(--cor-cinza-claro);
+    }
+
+    .parallax h2{
+        font-size: 30px;
+        -webkit-text-stroke: .5px var(--cor-cinza-claro);
+    }
+
+    .abrir-menu{
+        height: 40px;
+        width: 40px;
+        background-image: url(../assets/abrir-menu.png);
+        background-size: cover;
+        border: 0;
+        display: block;
+        border-radius: 10px;
+    }
+
+    .menu{
+        background-color: #95b159;
+        height: 100%;
+        max-width: 190px;
+        width: 45%;
+        position: fixed;
+        top: 0;
+        z-index: 10;
+        right: -200px;
+
+        border: 1px solid #34401b;
+        border-radius: 80px 0 0 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        transition: right .6s ease-in-out;
+    }
+
+    .menu-mobile .menu{
+        right: 0;
+    }
+
+    .fechar-menu{
+        height: 40px;
+        width: 40px;
+        background-image: url(../assets/fechar-menu.png);
+        background-size: cover;
+        border: 0;
+        display: block;
+        border-radius: 10px;
+
+        align-self: flex-end;
+        margin: 20px;
+    }
+
+    .menu ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .menu ul li a{
+        margin: 0px;
+    }
+
+    .menu ul li a:hover{
+        color: #34401b;
+    }
+
+    .menu ul li .botao-ativo{
+        color: #34401b;
+    }
+
+    .menu .redes-sociais{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .redes-sociais li{
+        width: 30px;
+        height: 30px;
+        background-color: #34401b;
+    }
+
+    .menu .redes-sociais li a{
+        margin: 3px;
+    }
+
+    .redes-sociais a{
+        height: 30px;
+    }
+
+    .redes-sociais img{
+        width: 24px;
+    }
+
+    .contato {
+        font-size: 20px;
+        margin-left: 0;
+    }
+
+    .contato a{
+        margin-bottom: 20px;
+        background-color: #d9d9d9;
+        color: #8c493a;
+        border: solid 2px #8c493a;
+    }
+
+    .banner{
+        display: none;
+    }
+
+    .diferencial h3,
+    .diferencial h2{
+        font-size: 20px;
+    }
+
+    .dif-cards{
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .dif-cards article{
+        width: 70%;
+        height: 250px;
+    }
+
+    .dif-cards article h5{
+        font-size: 20px;
+    }
+
+    .dif-cards article img{
+        width: 36px;
+        height: 36px;
+    }
+
+    .dif-cards article p{
+        font-size: 15px;
+    }
+
+    /* Alteração da Gabriele: remove largura fixa dos cards de serviços no tablet */
+    .ser-cards article{
+        width: 100%;
+    }
+
+    /* Alteração da Gabriele: evita desalinhamento do botão dos cards de serviços no tablet */
+    .ser-cards article a{
+        margin-left: 0;
+    }
+
+    .avaliações .ava-cards article {
+        height: 400px;
+    }
+
+    .ava-cards article h5{
+        font-size: 20px;
+    }
+
+    .ava-cards .slick-prev, .ava-cards .slick-next {
+        top: 455px;
+        right: 41px;
+        z-index: 2;
+    }
+
+    .faq{
+        flex-direction: column;
+        align-items: center;
+        margin: 50px auto;
+    }
+
+    .faq-titulo{
+        max-width: 100%;
+        height: 350px;
+    }
+
+    .faq-titulo h3{
+        font-size: 70px;
+    }
+
+    .faq-cards{
+        max-width: 100%;
+    }
+
+    .faq-cards details{
+        width: 90%;
+    }
+
+    .formulario{
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .rodape-grid{
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .center{
+        gap: 5px;
+    }
+
+    .right{
+        gap: 40px;
+    }
+
+    .local-titulo{
+        margin: 0 10px;
+    }
+
+    .contato-mapa{
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .mapa iframe{
+        width: 100%;
+    }
+}
+
+@media (max-width: 380px){
+
+    /* IDEIA É CRIAR UMA UI PRÓPRIA */
+
+    /* QUEBRA DE LINHA PARA MOBILE PARA AJUSTAR MEDIDAS
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin: 50px auto; 
+    */
+
+    .parallax h3{
+        font-size: 40px;
+        -webkit-text-stroke: .5px var(--cor-cinza-claro);
+    }
+
+    .parallax h2{
+        font-size: 30px;
+        -webkit-text-stroke: .5px var(--cor-cinza-claro);
+    }
+
+    .abrir-menu{
+        height: 40px;
+        width: 40px;
+        background-image: url(../assets/abrir-menu.png);
+        background-size: cover;
+        border: 0;
+        display: block;
+        border-radius: 10px;
+    }
+
+    .menu{
+        background-color: #95b159;
+        height: 100%;
+        max-width: 190px;
+        width: 45%;
+        position: fixed;
+        top: 0;
+        z-index: 10;
+        right: -200px;
+
+        border: 1px solid #34401b;
+        border-radius: 80px 0 0 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        transition: right .6s ease-in-out;
+    }
+
+    .menu-mobile .menu{
+        right: 0;
+    }
+
+    .fechar-menu{
+        height: 40px;
+        width: 40px;
+        background-image: url(../assets/fechar-menu.png);
+        background-size: cover;
+        border: 0;
+        display: block;
+        border-radius: 10px;
+
+        align-self: flex-end;
+        margin: 20px 20px;
+    }
+
+    .menu ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .menu ul li a{
+        margin: 0px;
+    }
+
+    .menu ul li a:hover{
+        color: #34401b;
+    }
+
+    .menu ul li .botao-ativo{
+        color: #34401b;
+    }
+
+    .menu .redes-sociais{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .redes-sociais li{
+        width: 30px;
+        height: 30px;
+        background-color: #34401b;
+    }
+
+    .menu .redes-sociais li a{
+        margin: 3px;
+    }
+
+    .redes-sociais a{
+        height: 30px;
+    }
+
+    .redes-sociais img{
+        width: 24px;
+    }
+
+    .contato {
+        font-size: 20px;
+        margin-left: 0;
+    }
+
+    .contato a{
+        margin-bottom: 20px;
+        background-color: #d9d9d9;
+        color: #8c493a;
+        border: solid 2px #8c493a;
+    }
+
+    .banner{
+        display: none;
+    }
+
+    .diferencial h3,
+    .diferencial h2{
+        font-size: 20px;
+    }
+
+    .dif-cards{
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .dif-cards article{
+        width: 250px;
+        height: 250px;
+    }
+
+    .dif-cards article h5{
+        font-size: 20px;
+    }
+
+    .dif-cards article img{
+        width: 36px;
+        height: 36px;
+    }
+
+    .dif-cards article p{
+        font-size: 15px;
+    }
+
+    /* Alteração da Gabriele: mantém os cards de serviços ocupando toda a coluna no mobile */
+    .ser-cards article{
+        width: 100%;
+    }
+
+    /* Alteração da Gabriele: evita desalinhamento do botão dos cards de serviços no mobile */
+    .ser-cards article a{
+        margin-left: 0;
+    }
+
+    .avaliações .ava-cards article {
+        height: 400px;
+    }
+
+    .ava-cards article h5{
+        font-size: 20px;
+    }
+
+    .ava-cards .slick-prev, .ava-cards .slick-next {
+        top: 455px;
+        right: 41px;
+        z-index: 2;        
+    }
+
+    .faq{
+        flex-direction: column;
+        align-items: center;
+        margin: 50px auto;
+    }
+
+    .faq-titulo{
+        max-width: 100%;
+        height: 350px;
+    }
+
+    .faq-titulo h3{
+        font-size: 70px;
+    }
+
+    .faq-cards{
+        max-width: 100%;
+    }
+
+    .faq-cards details{
+        width: 90%;
+    }
+
+    .faq-cards details summary{
+        font-size: 22px;
+    }
+
+    .faq-cards details p{
+        font-size: 16px;
+    }
+
+    .formulario{
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .rodape-grid{
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .center{
+        gap: 5px;
+    }
+
+    .right{
+        gap: 40px;
+    }
+
+    .local-titulo{
+        margin: 0 10px;
+    }
+
+    .contato-mapa{
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .mapa iframe{
+        width: 100%;
+    }
+}
+
+/* Alteração da Gabriele: prioriza a versão responsiva mais recente do banner e do parallax */
+@media (max-width: 768px) {
+    .banner {
+        display: flex;
+        min-height: 560px;
+        align-items: flex-end;
+        padding-bottom: 56px;
+    }
+
+    .banner::before {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(52, 64, 27, 0.28) 0%,
+                rgba(52, 64, 27, 0.92) 72%
+            );
+    }
+
+    .banner-conteudo {
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .banner-conteudo h2 {
+        font-size: clamp(42px, 13vw, 62px);
+    }
+
+    .banner-conteudo p {
+        font-size: 16px;
+    }
+
+    .banner-acoes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .banner .btn-banner {
+        width: 100%;
+    }
+
+    .parallax {
+        min-height: 230px;
+        padding: 54px 20px;
+        background-attachment: scroll;
+    }
+
+    .parallax h3 {
+        font-size: 16px;
+        -webkit-text-stroke: 0;
+    }
+
+    .parallax h2 {
+        font-size: clamp(32px, 10vw, 44px);
+        -webkit-text-stroke: 0;
+    }
+}
+
+/* Alteração da Gabriele: prioriza a versão responsiva mais recente dos cards de serviços, diferencial e FAQ no tablet */
+@media (max-width: 1024px) {
+    .ser-cards.padrao,
+    .padrao.ser-cards,
+    .ser-cards {
+        width: min(900px, calc(100% - 50px));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 26px;
+    }
+
+    .faq {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .faq-titulo,
+    .faq-cards {
+        width: min(760px, 100%);
+        min-height: auto;
+    }
+
+    .cuidadora,
+    .experiencias,
+    .cta-sobre {
+        grid-template-columns: 1fr;
+    }
+
+    .experiencias .imagem-exp {
+        order: -1;
+    }
+
+    .info-cuidadora,
+    .info-exp {
+        align-items: center;
+        text-align: center;
+    }
+
+    .retrato-cuidadora img,
+    .imagem-exp img {
+        height: 440px;
+    }
+
+    .fale-conosco {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* Alteração da Gabriele: prioriza a versão responsiva mais recente dos cards, FAQ e página Sobre no mobile */
+@media (max-width: 700px) {
+    .dif-cards {
+        gap: 20px;
+    }
+
+    .dif-cards article {
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .ser-cards.padrao,
+    .padrao.ser-cards,
+    .ser-cards {
+        width: min(100%, calc(100% - 30px));
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .ser-cards article {
+        min-height: 340px;
+    }
+
+    .ser-cards article h5 {
+        font-size: 24px;
+    }
+
+    .faq {
+        padding: 42px 0;
+    }
+
+    .faq-titulo h3 {
+        font-size: 40px;
+    }
+
+    .faq-cards details summary {
+        font-size: 21px;
+    }
+}
+
+/* Cabeçalho responsivo: mantém logo, navegação e ações alinhadas em qualquer largura. */
+@media (min-width: 981px) {
+    .topo > .padrao {
+        width: min(100% - 32px, 1440px);
+        padding-inline: 16px;
+    }
+}
+
+@media (max-width: 1280px) and (min-width: 981px) {
+    .topo > .padrao {
+        gap: 16px;
+    }
+
+    .topo .marca a {
+        width: 210px;
+        height: 72px;
+    }
+
+    .menu,
+    .menu > ul:first-of-type {
+        gap: 14px;
+    }
+
+    .menu ul li a {
+        font-size: 19px;
+    }
+
+    .menu > .redes-sociais {
+        gap: 8px;
+    }
+
+    .menu > .redes-sociais li {
+        width: 30px;
+        height: 30px;
+    }
+
+    .contato a {
+        min-height: 42px;
+        padding-inline: 16px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 980px) {
+    .topo > .padrao {
+        width: 100%;
+        min-height: 82px;
+        padding: 7px 20px;
+        gap: 16px;
+    }
+
+    .topo .marca a {
+        width: 200px;
+        height: 68px;
+    }
+
+    .abrir-menu {
+        display: block;
+        width: 42px;
+        height: 42px;
+        margin-left: auto;
+        flex: 0 0 42px;
+        border: 0;
+        border-radius: 10px;
+        background: url(../assets/abrir-menu.png) center / cover no-repeat;
+        cursor: pointer;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -340px;
+        z-index: 1100;
+        width: min(320px, 88vw);
+        max-width: none;
+        height: 100dvh;
+        padding: 18px 22px 24px;
+        margin: 0;
+        overflow-y: auto;
+        display: flex;
+        flex: none;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 24px;
+        border: 0;
+        border-radius: 24px 0 0 24px;
+        background-color: var(--cor-verde-claro);
+        box-shadow: -14px 0 34px rgba(0, 0, 0, 0.25);
+        transition: right 0.35s ease;
+    }
+
+    .menu-mobile .menu {
+        right: 0;
+    }
+
+    .fechar-menu {
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin: 0 0 4px auto;
+        flex: 0 0 40px;
+        border: 0;
+        border-radius: 10px;
+        background: url(../assets/fechar-menu.png) center / cover no-repeat;
+        cursor: pointer;
+    }
+
+    .menu > ul:first-of-type {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+    }
+
+    .menu ul li a {
+        width: 100%;
+        padding: 11px 12px;
+        justify-content: space-between;
+        color: var(--cor-verde-escuro);
+        font-size: 21px;
+        line-height: 1.2;
+    }
+
+    .dropdown .submenu {
+        position: static;
+        min-width: 0;
+        width: 100%;
+        max-height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transform: none;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .dropdown:hover .submenu,
+    .dropdown:focus-within .submenu {
+        max-height: 430px;
+        padding: 8px;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .dropdown .submenu::before {
+        display: none;
+    }
+
+    .menu > .redes-sociais {
+        width: 100%;
+        margin: auto 0 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .contato {
+        width: 100%;
+        margin: 0;
+    }
+
+    .contato a {
+        width: 100%;
+        min-height: 46px;
+        margin: 0;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .topo > .padrao {
+        min-height: 72px;
+        padding-inline: 14px;
+    }
+
+    .topo .marca a {
+        width: 170px;
+        height: 58px;
+    }
+
+    .abrir-menu {
+        width: 38px;
+        height: 38px;
+        flex-basis: 38px;
+    }
+}
+
+/* Alteração da Gabriele: complementa a versão mobile mais recente da página Sobre */
+@media (max-width: 600px) {
+    .sobre {
+        margin-top: 45px;
+        gap: 50px;
+    }
+
+    .retrato-cuidadora img,
+    .imagem-exp img {
+        height: 340px;
+        border-radius: 22px;
+    }
+
+    .competencias,
+    .fale-conosco {
+        padding: 28px 22px;
+        border-radius: 22px;
+    }
+
+    .info-cuidadora p,
+    .info-exp p {
+        font-size: 16px;
+    }
+
+    .fale-conosco a {
+        width: 100%;
+    }
+}
+
+/* Alteração da Gabriele: responsividade das páginas individuais de serviços para tablet */
+@media (max-width: 1024px) {
+    .servico-hero,
+    .servico-conteudo,
+    .servico-apoio {
+        grid-template-columns: 1fr;
+    }
+
+    .servico-imagem img {
+        height: 440px;
+    }
+}
+
+/* Alteração da Gabriele: responsividade das páginas individuais de serviços para mobile */
+@media (max-width: 700px) {
+    .servico-detalhe {
+        margin-top: 45px;
+        gap: 28px;
+    }
+
+    .servico-card {
+        padding: 28px 22px;
+        border-radius: 22px;
+    }
+
+    .servico-imagem img {
+        height: 320px;
+        border-radius: 22px;
+    }
+
+    .servico-titulo-linha {
+        align-items: flex-start;
+    }
+
+    .servico-card-cta a {
+        width: 100%;
+    }
+}
+
+/* ==========================================================
+   Responsividade global do projeto
+   ========================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+    max-width: 100%;
+}
+
+img,
+svg,
+video,
+canvas {
+    height: auto;
+}
+
+main,
+section,
+article,
+div,
+form,
+fieldset,
+nav,
+ul,
+li {
+    min-width: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+summary,
+span {
+    overflow-wrap: anywhere;
+}
+
+.padrao {
+    width: min(100% - 40px, 1500px);
+    max-width: 1500px;
+    padding-inline: 0;
+}
+
+.banner,
+.banner-conteudo,
+.diferencial,
+.avaliações,
+.faq,
+.formulario,
+.local,
+.sobre,
+.servico-detalhe {
+    max-width: 100%;
+}
+
+.banner img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.dif-cards,
+.ser-cards {
+    width: min(100% - 40px, 1180px);
+    margin-inline: auto;
+}
+
+.dif-cards article,
+.ser-cards article {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.ser-cards article a {
+    margin-left: 0;
+}
+
+.ava-cards {
+    width: calc(100% - 64px);
+    max-width: 1380px;
+}
+
+.faq-titulo,
+.faq-cards {
+    max-width: 100%;
+    height: auto;
+}
+
+.for-cards,
+.for-cards form,
+.for-campos,
+.for-assunto,
+.for-assunto textarea,
+.btn-for {
+    max-width: 100%;
+}
+
+.for-cards {
+    width: min(100%, 420px);
+}
+
+.for-campos,
+.for-assunto,
+.for-assunto textarea,
+.btn-for {
+    width: 100%;
+}
+
+.mapa,
+.mapa iframe {
+    width: 100%;
+}
+
+.mapa iframe {
+    min-height: 300px;
+    border: 0;
+}
+
+.localizacao {
+    gap: 16px;
+}
+
+.localizacao a {
+    min-width: 0;
+}
+
+.btn-whatsapp {
+    right: clamp(14px, 3vw, 45px);
+    bottom: clamp(14px, 3vw, 25px);
+}
+
+@media (max-width: 1200px) {
+    .padrao {
+        width: min(100% - 40px, 1100px);
+    }
+
+    .dif-cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dif-cards article {
+        width: 100%;
+    }
+
+    .faq {
+        gap: 36px;
+    }
+
+    .faq-titulo,
+    .faq-cards {
+        width: min(50%, 520px);
+    }
+
+    .formulario,
+    .contato-mapa {
+        gap: 44px;
+    }
+
+    .rodape-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
+        gap: 32px;
+    }
+
+    .rodape-grid .left,
+    .rodape-grid .center,
+    .rodape-grid .right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    .padrao {
+        width: min(100% - 32px, 820px);
+    }
+
+    .diferencial,
+    .ser-cards,
+    .ava-cards,
+    .faq,
+    .formulario,
+    .local,
+    .sobre,
+    .servico-detalhe {
+        margin-top: 44px;
+        margin-bottom: 44px;
+    }
+
+    .faq,
+    .formulario,
+    .contato-mapa {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .faq-titulo,
+    .faq-cards {
+        width: min(100%, 680px);
+    }
+
+    .faq-titulo {
+        min-height: 180px;
+    }
+
+    .faq-cards details {
+        margin: 8px 0;
+    }
+
+    .for-titulo,
+    .for-cards,
+    .mapa {
+        width: min(100%, 680px);
+    }
+
+    .for-titulo {
+        gap: 20px;
+    }
+
+    .for-titulo img {
+        width: min(190px, 55vw);
+        height: auto;
+        margin-inline: auto;
+    }
+
+    .mapa iframe {
+        aspect-ratio: 16 / 9;
+        height: auto;
+    }
+
+    .rodape-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .rodape-grid .right {
+        grid-column: 1 / -1;
+    }
+
+    .cuidadora,
+    .experiencias,
+    .cta-sobre,
+    .servico-hero,
+    .servico-conteudo,
+    .servico-apoio {
+        grid-template-columns: 1fr;
+    }
+
+    .retrato-cuidadora img,
+    .imagem-exp img,
+    .servico-imagem img {
+        height: clamp(300px, 58vw, 460px);
+    }
+}
+
+@media (max-width: 640px) {
+    .padrao,
+    .dif-cards,
+    .ser-cards {
+        width: calc(100% - 28px);
+    }
+
+    .dif-cards,
+    .ser-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .dif-cards article,
+    .ser-cards article {
+        width: 100%;
+        max-width: 440px;
+        margin-inline: auto;
+    }
+
+    .ser-cards article {
+        height: auto;
+        min-height: 340px;
+    }
+
+    .ava-cards {
+        width: calc(100% - 54px);
+    }
+
+    .avaliações .ava-cards article {
+        height: auto;
+        min-height: 360px;
+        margin-inline: 6px;
+        padding: 24px 18px;
+    }
+
+    .ava-cards .slick-prev {
+        left: -22px;
+    }
+
+    .ava-cards .slick-next {
+        right: -22px;
+    }
+
+    .faq {
+        padding: 36px 0;
+    }
+
+    .faq-titulo {
+        min-height: 130px;
+    }
+
+    .faq-titulo h3,
+    .for-titulo h3,
+    .local-titulo h3 {
+        font-size: clamp(30px, 10vw, 42px);
+    }
+
+    .faq-cards details summary {
+        padding-right: 36px;
+        font-size: clamp(19px, 6vw, 23px);
+    }
+
+    .formulario {
+        padding-block: 36px !important;
+    }
+
+    .localizacao {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .localizacao img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .rodape-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .rodape-grid .right {
+        grid-column: auto;
+    }
+
+    .rodape-grid .left,
+    .rodape-grid .center,
+    .rodape-grid .right {
+        align-items: center;
+        gap: 20px;
+    }
+
+    .rodape-grid .left p {
+        text-align: center;
+        text-indent: 0;
+    }
+
+    .barra-final {
+        padding: 14px;
+    }
+
+    .barra-final p {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .competencias,
+    .fale-conosco,
+    .servico-card {
+        padding: 24px 18px;
+    }
+
+    .servico-titulo-linha {
+        align-items: flex-start;
+    }
+
+    .servico-titulo-linha img {
+        flex: 0 0 auto;
+    }
+
+    .btn-whatsapp {
+        padding: 9px;
+    }
+
+    .btn-whatsapp img {
+        width: 28px;
+    }
+}
+
+@media (max-width: 380px) {
+    .padrao,
+    .dif-cards,
+    .ser-cards {
+        width: calc(100% - 20px);
+    }
+
+    .for-campos,
+    .for-assunto textarea,
+    .btn-for {
+        border-radius: 14px;
+    }
+
+    .servico-cabecalho h1 {
+        font-size: 36px;
+    }
+
+    .servico-subtitulo {
+        font-size: 23px;
+    }
+}
+
+@media (hover: none) {
+    .dif-cards article:hover,
+    .ser-cards article:hover,
+    .faq-cards details:hover,
+    .btn-for:hover,
+    .fale-conosco a:hover {
+        transform: none;
+    }
+}
