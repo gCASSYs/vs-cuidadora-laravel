@@ -26,7 +26,7 @@
                 </li>
 
                 <li class="dropdown">
-                    <a class="servicos botao-ativo"  href="{{ route ('home') }}">
+                    <a class="servicos botao-ativo" href="{{ route('servico') }}">
                         Serviços
                         <!-- Alteração da Gabriele: ajuste do ícone do submenu para abrir visualmente para baixo -->
                         <i class="fa-solid fa-caret-down"></i>
@@ -34,12 +34,10 @@
 
                     <!-- Alteração da Gabriele: submenu ajustado para apontar para as páginas individuais dos serviços -->
                     <ul class="submenu">
-                        <li><a href="{{ route ('home') }}">Acompanhamento Diário</a></li>
-                        <li><a href="{{ route ('home') }}">Auxílio com Medicamentos</a></li>
-                        <li><a href="{{ route ('home') }}">Supervisão e Segurança</a></li>
-                        <li><a href="{{ route ('home') }}">Companhia e Suporte Emocional</a></li>
-                        <li><a href="{{ route ('home') }}">Apoio na Alimentação</a></li>
-                        <li><a href="{{ route ('home') }}">Higiene e Cuidados Básicos</a></li>
+
+                        @foreach ($categoriaServico as $lista)
+                        <li><a href="{{ route('servico.categoria', $lista->id_servico_ancora) }}">{{$lista->titulo_servico_ancora}}</a></li>
+                        @endforeach
                     </ul>
                 </li>
 

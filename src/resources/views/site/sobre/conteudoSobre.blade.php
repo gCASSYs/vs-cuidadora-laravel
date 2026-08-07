@@ -2,7 +2,7 @@
             <!-- Alteração da Gabriele: conteúdo da página Sobre adaptado para contar a história da Vânia mantendo a estrutura original -->
             <div class="cuidadora">
                 <div class="retrato-cuidadora">
-                    <img src="{{ asset('vs-cuidadora/assets/servicos4.png') }}" alt="Vânia Silva cuidadora de idosos oferecendo companhia e atenção">
+                    <img src="{{ asset('vs-cuidadora/assets/servico/servicos4.png') }}" alt="Vânia Silva cuidadora de idosos oferecendo companhia e atenção">
                 </div>
 
                 <div class="info-cuidadora">
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="imagem-exp">
-                    <img src="{{ asset('vs-cuidadora/assets/servicos5.png')}}" alt="Cuidadora apoiando idoso durante a rotina">
+                    <img src="{{ asset('vs-cuidadora/assets/servico/servicos5.png')}}" alt="Cuidadora apoiando idoso durante a rotina">
                 </div>
             </div>
             
