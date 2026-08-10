@@ -119,7 +119,7 @@
                 <div class="fale-conosco">
                     <!-- Alteração da Gabriele: chamada final ajustada para incentivar contato sem parecer venda agressiva -->
                     <h3>Quer entender se o atendimento da Vânia combina com a necessidade da sua família?</h3>
-                    <a href="index.php#form-contat">
+                    <a href="{{ route('home') }}#form-contat">
                         Entre em contato
                     </a>
                 </div>

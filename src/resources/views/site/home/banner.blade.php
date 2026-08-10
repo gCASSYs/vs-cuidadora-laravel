@@ -14,7 +14,7 @@
 
         <div class="banner-acoes">
             <a href="{{ route('home') }}" class="btn-banner btn-banner-servicos">Meus serviços</a>
-            <a href="index.php#form-contat" class="btn-banner btn-banner-contato">Entre em contato</a>
+            <a href="{{ route('home') }}#form-contat" class="btn-banner btn-banner-contato">Entre em contato</a>
         </div>
     </div>
 </section>

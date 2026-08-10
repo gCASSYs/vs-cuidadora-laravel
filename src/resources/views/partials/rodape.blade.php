@@ -9,8 +9,8 @@
                 atenção e apoio na rotina para famílias que buscam um cuidado
                 mais humano, próximo e responsável.
             </p>
-
-            <a href="index.php#form-contat">Fale com a Vânia</a>
+            
+            <a href="{{ route('home') }}#form-contat">Fale com a Vânia</a>
         </div>
 
         <div class="center">
