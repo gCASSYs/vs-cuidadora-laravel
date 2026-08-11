@@ -13,7 +13,7 @@
         </p>
 
         <div class="banner-acoes">
-            <a href="{{ route('home') }}" class="btn-banner btn-banner-servicos">Meus serviços</a>
+            <a href="{{ route('servico') }}" class="btn-banner btn-banner-servicos">Meus serviços</a>
             <a href="index.php#form-contat" class="btn-banner btn-banner-contato">Entre em contato</a>
         </div>
     </div>

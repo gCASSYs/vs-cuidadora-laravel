@@ -2,7 +2,7 @@
 // Alteração da Gabriele: ajuste do carrossel para ficar mais suave e premium, sem alterar a estrutura dos cards
 if ($('.ava-cards').length) {
   $('.ava-cards').slick({
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3500,

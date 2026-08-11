@@ -6,7 +6,7 @@
     
     @include('site.home.diferencial')
 
-    @include('site.home.servicos')
+    @include('site.servico.servicos')
 
     @include('site.home.depoimento')
 

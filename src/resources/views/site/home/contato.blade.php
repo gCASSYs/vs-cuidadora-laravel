@@ -53,3 +53,5 @@
                 </form>
             </div>
         </section>
+
+          <a href="#" target="_blank" class="btn-whatsapp"><img src="{{ asset('vs-cuidadora/assets/whatsapp-24.png')}}" alt="Botão Flutuante Whatsapp"></a>

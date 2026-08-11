@@ -28,4 +28,10 @@ class Servico extends Model{
     public function CuidadoServico(){
         return $this->belongsTo(ServicoCuidado::class, 'id_servico_ancora', 'id_servico_ancora');
     }
+
+    public function TopicoServico(){
+        return $this->belongsTo(ServicoTopico::class, 'id_servico_ancora', 'id_servico_ancora');
+    }
+
+ 
 }
