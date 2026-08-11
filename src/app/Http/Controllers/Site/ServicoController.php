@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\SobreResumo;
 use App\Models\Servico;
 
 
@@ -42,10 +43,12 @@ class ServicoController extends Controller{
         ->where('id_servico_ancora', 'ATIVO')
         ->orderBy('titulo_servico_ancora')
         ->get();
+
+        $SobreResumo = SobreResumo::where('status_sobre_resumo', 'ATIVO')->first();
         
  
 
 
-        return view('site.servico.servico', compact('listaAncora', 'listaFuncional', 'listaIncluir', 'listaCuidado', 'servicoSelecionado', 'ancoras'));
+        return view('site.servico.servico', compact('listaAncora', 'listaFuncional', 'listaIncluir', 'listaCuidado', 'servicoSelecionado', 'ancoras', 'SobreResumo'));
     }
 }

@@ -2,12 +2,10 @@
     <div class="padrao rodape-grid">
         <div class="left">
             <!-- Alteração da Gabriele: texto do rodapé adaptado para apresentar a Vânia de forma breve e profissional -->
-            <h2>Sobre a Vânia</h2>
+            <h2>{{ $SobreResumo->titulo_sobre_resumo }}</h2>
 
             <p>
-                Vânia Silva atua como cuidadora de idosos, oferecendo companhia,
-                atenção e apoio na rotina para famílias que buscam um cuidado
-                mais humano, próximo e responsável.
+                {{ $SobreResumo->texto_sobre_resumo }}
             </p>
             
             <a href="{{ route('home') }}#form-contat">Fale com a Vânia</a>
@@ -68,7 +66,7 @@
 
     <div class="barra-final">
         <!-- Alteração da Gabriele: crédito atualizado para SintoniaWeb -->
-        <p>© 2026 - Criado e desenvolvido por SintoniaWeb</p>
+        <p>© {{ date('Y') }} - Criado e desenvolvido por SintoniaWeb</p>
     </div>
 </footer>
 

@@ -2,30 +2,23 @@
             <!-- Alteração da Gabriele: conteúdo da página Sobre adaptado para contar a história da Vânia mantendo a estrutura original -->
             <div class="cuidadora">
                 <div class="retrato-cuidadora">
-                    <img src="{{ asset('vs-cuidadora/assets/servico/servicos4.png') }}" alt="Vânia Silva cuidadora de idosos oferecendo companhia e atenção">
+                    <img src="{{ asset('vs-cuidadora/assets/' . $Sobre->img1_sobre) }}" alt="{{ $Sobre->titulo_sobre }}">
                 </div>
 
                 <div class="info-cuidadora">
-                    <h2>Sobre a Vânia</h2>
-                    <h3>Cuidado com presença, atenção e carinho</h3>
+                    <h2>{{ $Sobre->titulo_sobre }}</h2>
+                    <h3>{{ $Sobre->subtitulo_sobre }}</h3>
 
                     <p>
-                        Vânia Silva atua como cuidadora de idosos, oferecendo companhia,
-                        atenção e apoio na rotina para famílias que buscam um cuidado mais
-                        humanizado e próximo.
+                        {{ $Sobre->paragrafo1_sobre }}
                     </p>
 
                     <p>
-                        Sua trajetória no cuidado começou a partir da vivência prática com
-                        pessoas dependentes, desenvolvendo paciência, responsabilidade e
-                        sensibilidade para entender as necessidades de cada pessoa.
+                        {{ $Sobre->paragrafo2_sobre }}
                     </p>
 
                     <p>
-                        Ao longo dos anos, Vânia construiu uma forma de cuidar baseada no
-                        vínculo, na escuta e no respeito. Seu atendimento valoriza a presença,
-                        o acolhimento e a segurança, sempre considerando a rotina e os limites
-                        de cada idoso.
+                        {{ $Sobre->paragrafo3_sobre }}
                     </p>
                 </div>
             </div>
@@ -33,29 +26,23 @@
             <div class="experiencias">
                 <div class="info-exp">
                     <!-- Alteração da Gabriele: texto de experiência ajustado para aproximar a Vânia das famílias que procuram cuidado -->
-                    <h2>Experiência no cuidado diário</h2>
+                    <h2>{{ $Sobre->titulo_secundario_sobre }}</h2>
 
                     <p>
-                        A experiência da Vânia está ligada ao acompanhamento diário, ao apoio
-                        na alimentação, à companhia e à observação das necessidades individuais
-                        do idoso.
+                        {{ $Sobre->paragrafo1_secundario_sobre }}
                     </p>
 
                     <p>
-                        Seu cuidado vai além da presença física. Ela busca criar um ambiente
-                        mais tranquilo, acolhedor e seguro, ajudando o idoso em atividades leves
-                        e mantendo atenção ao seu bem-estar.
+                        {{ $Sobre->paragrafo2_secundario_sobre }}
                     </p>
 
                     <p>
-                        Esse olhar próximo permite que a família tenha mais confiança e saiba
-                        que o idoso está sendo acompanhado com dedicação, respeito e
-                        responsabilidade.
+                        {{ $Sobre->paragrafo3_secundario_sobre }}
                     </p>
                 </div>
 
                 <div class="imagem-exp">
-                    <img src="{{ asset('vs-cuidadora/assets/servico/servicos5.png')}}" alt="Cuidadora apoiando idoso durante a rotina">
+                    <img src="{{ asset('vs-cuidadora/assets/' . $Sobre->img2_sobre)}}" alt="{{ $Sobre->titulo_secundario_sobre }}">
                 </div>
             </div>
             
@@ -89,28 +76,27 @@
             <div class="cta-sobre">
                 <div class="competencias">
                     <!-- Alteração da Gabriele: bloco final transformado em diferenciais do cuidado da Vânia, mantendo a estrutura original -->
-                    <h2>O jeito da Vânia cuidar</h2>
-                    <h3>Atendimento próximo e responsável</h3>
+                    <h2>{{ $SobrePainel->titulo_sobre_painel }}</h2>
+                    <h3>{{ $SobrePainel->subtitulo_sobre_painel }}</h3>
 
                     <ul>
                         <li>
                             <p>
-                                Companhia, conversa e escuta ativa para tornar a rotina do idoso
-                                mais acolhedora e tranquila.
+                                {{ $SobrePainel->primeiro_ponto_sobre_painel }}
                             </p>
                         </li>
 
                         <li>
                             <p>
-                                Apoio em atividades leves, alimentação e acompanhamento conforme
-                                a necessidade e a condição de cada caso.
+                                {{ $SobrePainel->segundo_ponto_sobre_painel }}
+
                             </p>
                         </li>
 
                         <li>
                             <p>
-                                Comunicação clara com a família, respeito aos limites do idoso e
-                                cuidado realizado com paciência e atenção.
+                                {{ $SobrePainel->terceiro_ponto_sobre_painel }}
+
                             </p>
                         </li>
                     </ul>

@@ -53,3 +53,5 @@
                 </form>
             </div>
         </section>
+
+        <a href="https://wa.me/5511999999999?text=Olá!+Gostaria+de+falar+sobre+o+serviço+" target="_blank" class="btn-whatsapp"><img src="{{ asset('vs-cuidadora/assets/whatsapp-24.png') }}" alt="Botão Flutuante para Whatsapp"></a>
