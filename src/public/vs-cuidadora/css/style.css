@@ -657,6 +657,15 @@ html{
     width: 30px;
 }
 
+
+.ava-cards .estrela-ativa{
+    opacity: 1;
+}
+
+.ava-cards .estrela-inativa{
+    opacity: .2;
+}
+
 .ava-cards .slick-prev:before,
 .ava-cards .slick-next:before
 {
@@ -666,7 +675,7 @@ html{
 
 .ava-cards .slick-prev
 {
-    left: -25px;
+    left: -65px;
 }
 
 .ava-cards .slick-next

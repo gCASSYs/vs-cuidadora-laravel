@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\SobreResumo;
 use App\Models\Servico;
-
-
+use App\Models\ServicoTopico;
 
 class ServicoController extends Controller{
 
@@ -30,6 +29,9 @@ class ServicoController extends Controller{
         ->where('status_servico_ancora', 'ATIVO')
         ->get();
 
+  
+ 
+
         if($idServico === null){
             $servicoSelecionado = $listaAncora->first();
         }else{
@@ -46,9 +48,11 @@ class ServicoController extends Controller{
 
         $SobreResumo = SobreResumo::where('status_sobre_resumo', 'ATIVO')->first();
         
- 
+        $listaTopico = Servico::with('TopicoServico')
+        ->where('status_servico_ancora', 'ATIVO')
+        ->inRandomOrder()
+        ->get(); 
 
-
-        return view('site.servico.servico', compact('listaAncora', 'listaFuncional', 'listaIncluir', 'listaCuidado', 'servicoSelecionado', 'ancoras', 'SobreResumo'));
+        return view('site.servico.servico', compact('listaAncora', 'listaFuncional', 'listaIncluir', 'listaCuidado', 'servicoSelecionado', 'ancoras', 'listaTopico', 'SobreResumo'));
     }
 }
