@@ -18,15 +18,15 @@
             <ul>
                 <!-- Alteração da Gabriele: ajuste dos nomes do menu para combinar com o site da Vânia, mantendo classes e estrutura -->
                 <li>
-                    <a class="botao-ativo" href="{{ route ('home') }}">Início</a>
+                    <a class=" {{ Request()->routeIs('home') ? 'botao-ativo' : '' }}" href="{{ route ('home') }}">Início</a>
                 </li>
 
                 <li>
-                    <a class="botao-ativo" href="{{ route ('sobre') }}">Sobre</a>
+                    <a class=" {{ Request()->routeIs('sobre') ? 'botao-ativo' : '' }}" href="{{ route ('sobre') }}">Sobre</a>
                 </li>
 
                 <li class="dropdown">
-                    <a class="servicos botao-ativo" href="{{ route('servico') }}">
+                    <a class="servicos {{ Request()->routeIs('servico') ? 'botao-ativo' : '' }}" href="{{ route('servico') }}">
                         Serviços
                         <!-- Alteração da Gabriele: ajuste do ícone do submenu para abrir visualmente para baixo -->
                         <i class="fa-solid fa-caret-down"></i>
@@ -42,7 +42,7 @@
                 </li>
 
                 <li>
-                    <a href="index.php#form-contat">Contato</a>
+                    <a href="{{ route('home')}}#form-contat">Contato</a>
                 </li>
             </ul>
 
@@ -69,7 +69,7 @@
 
             <div class="contato">
                 <!-- Alteração da Gabriele: correção do botão de contato para apontar para o formulário existente -->
-                <a href="index.php#form-contat">Fale conosco</a>
+                <a href="{{ route('home') }}#form-contat">Fale conosco</a>
             </div>
         </nav>
     </div>

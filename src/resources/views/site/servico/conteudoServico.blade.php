@@ -53,7 +53,7 @@
         <article class="servico-card servico-card-cta">
             <h2>Quer conversar sobre este serviço?</h2>
             <p></p>
-            <a href="index.php#form-contat">Entre em contato</a>
+            <a href="{{ route('home') }}#form-contat">Entre em contato</a>
         </article>
     </div>
 </section>
