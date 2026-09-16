@@ -8,7 +8,6 @@ use App\Models\SobreResumo;
 use App\Models\ServicoTopico;
 use App\Models\Diferencial;
 use App\Models\Avaliacao;
-use App\Models\Cliente;
 
 class HomeController extends Controller
 {
@@ -28,10 +27,9 @@ class HomeController extends Controller
       ->inRandomOrder()
       ->get();
 
-      $listaAvaliacao = Cliente::with('ClienteAvaliacao')
-      ->where('status_cliente', 'ATIVO')
-      ->inRandomOrder()
-      ->get();
+      $listaAvaliacao = Avaliacao::where('status_avaliacao', 'ATIVO')
+        ->inRandomOrder()
+        ->get();
       
 
       return view('site.home.home', compact('listaTopico', 'listaDiferencial', 'listaAvaliacao', 'listaFaq', 'SobreResumo'));

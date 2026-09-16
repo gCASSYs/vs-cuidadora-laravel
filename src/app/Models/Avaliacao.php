@@ -10,11 +10,11 @@ class Avaliacao extends Model{
     public $timestamps = false;
     protected $fillable = [
         'id_cliente',
-        'titulo_avalicao',
-        'img_avalicao',
-        'mensagem_avalicao',
-        'estrela_avalicao',
-        'status_avalicao',
+        'titulo_avaliacao',
+        'img_avaliacao',
+        'mensagem_avaliacao',
+        'estrela_avaliacao',
+        'status_avaliacao',
     ];
       
     public function AvaliacaoCliente(){
