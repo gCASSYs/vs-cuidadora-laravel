@@ -7,9 +7,9 @@
                 <div class="faq-cards">
                     @foreach ($listaFaq as $linha)
                         <details>
-                            <summary>{{ $linha->pergunta_faq }}</summary>
+                            <summary>{{ $linha->titulo_duvida }}</summary>
                             <p>
-                                {{ $linha->resposta_faq }}
+                                {{ $linha->resposta_duvida }}
                             </p>
                         </details>
                     @endforeach

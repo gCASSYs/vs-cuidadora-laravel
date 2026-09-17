@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model{
     protected $table = 'tbl_info_cliente';
-    protected $primaryKey = 'id_info_cliente';
+    protected $primaryKey = 'id_cliente';
     public $timestamps = false;
 
     protected $fillable = [
@@ -22,7 +22,7 @@ class Cliente extends Model{
     ];
 
     public function ClienteAvalicao(){
-        return $this-> belongsTo(Avaliacao::class, 'id_cliente', 'id_cliente');
+        return $this->hasMany(Avaliacao::class, 'id_cliente', 'id_cliente');
     }
 
 }

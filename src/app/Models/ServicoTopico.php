@@ -10,7 +10,7 @@ class ServicoTopico extends Model{
     protected $primaryKey = 'id_servico';
     public $timestamps = false;
 
-    protected $fillabel = [
+    protected $fillable = [
         'id_servico_ancora',
         'fundo_servico',
         'icone_servico',
@@ -21,7 +21,7 @@ class ServicoTopico extends Model{
     ];
 
     public function ServicoTopico(){
-        return $this->hasOne(Servico::class, 'id_servico_ancora', 'id_servico_ancora');
+        return $this->belongsTo(Servico::class, 'id_servico_ancora', 'id_servico_ancora');
     }
 
 }

@@ -14,16 +14,9 @@ Class Sobre extends Model {
     protected $fillable = [
         'titulo_sobre',
         'subtitulo_sobre',
-        'paragrafo1_sobre',
-        'paragrafo2_sobre',
-        'paragrafo3_sobre',
-        'img1_sobre',
-        'titulo_secundario_sobre',
-        'paragrafo1_secundario_sobre',
-        'paragrafo2_secundario_sobre',
-        'paragrafo3_secundario_sobre',
-        'img2_sobre',
-        'status_sobre',
+        'texto_sobre',
+        'img_sobre',
+        'id_diferencial',
     ];
 
 }

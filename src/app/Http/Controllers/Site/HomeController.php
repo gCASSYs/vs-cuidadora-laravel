@@ -8,6 +8,7 @@ use App\Models\SobreResumo;
 use App\Models\ServicoTopico;
 use App\Models\Diferencial;
 use App\Models\Avaliacao;
+use App\Models\Banner;
 
 class HomeController extends Controller
 {
@@ -32,6 +33,8 @@ class HomeController extends Controller
         ->get();
       
 
-      return view('site.home.home', compact('listaTopico', 'listaDiferencial', 'listaAvaliacao', 'listaFaq', 'SobreResumo'));
+      $listaBanner = Banner::where('status_banner', 'ATIVO')->get();
+
+      return view('site.home.home', compact('listaTopico', 'listaDiferencial', 'listaAvaliacao', 'listaFaq', 'SobreResumo', 'listaBanner'));
     }
 }

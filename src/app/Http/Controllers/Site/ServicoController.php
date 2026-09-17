@@ -42,7 +42,7 @@ class ServicoController extends Controller{
 
         $ancoras = Servico::query()
         ->where('id_servico_ancora', $servicoSelecionado->id_servico_ancora)
-        ->where('id_servico_ancora', 'ATIVO')
+        ->where('status_servico_ancora', 'ATIVO')
         ->orderBy('titulo_servico_ancora')
         ->get();
 

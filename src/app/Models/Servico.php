@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class Servico extends Model{
     protected $table = 'tbl_servico_ancora';
@@ -18,19 +18,19 @@ class Servico extends Model{
     ];
 
     public function FuncionalServico(){
-        return $this-> belongsTo(ServicoFuncional::class, 'id_servico_ancora', 'id_servico_ancora');
+        return $this->hasOne(ServicoFuncional::class, 'id_servico_ancora', 'id_servico_ancora');
     }
 
     public function IncluirServico(){
-        return $this->belongsTo(ServicoIncluir::class, 'id_servico_ancora', 'id_servico_ancora');
+        return $this->hasOne(ServicoIncluir::class, 'id_servico_ancora', 'id_servico_ancora');
     }
 
     public function CuidadoServico(){
-        return $this->belongsTo(ServicoCuidado::class, 'id_servico_ancora', 'id_servico_ancora');
+        return $this->hasOne(ServicoCuidado::class, 'id_servico_ancora', 'id_servico_ancora');
     }
 
     public function TopicoServico(){
-        return $this->belongsTo(ServicoTopico::class, 'id_servico_ancora', 'id_servico_ancora');
+        return $this->hasMany(ServicoTopico::class, 'id_servico_ancora', 'id_servico_ancora');
     }
 
  

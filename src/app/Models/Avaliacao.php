@@ -18,6 +18,6 @@ class Avaliacao extends Model{
     ];
       
     public function AvaliacaoCliente(){
-        return $this->hasMany(Cliente::class, 'id_cliente', 'id_cliente');
+        return $this->belongsTo(Cliente::class, 'id_cliente', 'id_cliente');
     }
 }

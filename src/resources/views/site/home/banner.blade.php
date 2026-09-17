@@ -1,6 +1,7 @@
 <section class="banner" id="inicio">
     <!-- Alteração da Gabriele: inclusão de texto institucional no banner principal para apresentar melhor a Vânia -->
-    <img src="{{ asset('vs-cuidadora/assets/banner.png') }}" alt="Cuidadora acompanhando idosa com atenção e cuidado">
+    @php($banner = $listaBanner->first())
+    <img src="{{ $banner ? asset('vs-cuidadora/assets/' . $banner->img_banner) : asset('vs-cuidadora/assets/banner.png') }}" alt="{{ $banner?->titulo_banner ?? 'Cuidadora acompanhando idosa com atenção e cuidado' }}">
 
     <div class="banner-conteudo">
         
