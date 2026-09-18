@@ -1,3 +1,10 @@
 @extends('layout.dashboard')
-@section('title','Logo')
-@section('content') @include('admin.logo.listaLogo') @endsection
+{{-- Esconde somente nesta página o cabeçalho "Dashboard / Menu / Dashboard" do layout. --}}
+@section('show-page-header', 'false')
+{{-- Título usado na aba do navegador e na identificação da página. --}}
+@section('title', 'Logo')
+
+{{-- Inclui a tabela específica desta área dentro do layout administrativo. --}}
+@section('content')
+    @include('admin.logo.listaLogo')
+@endsection

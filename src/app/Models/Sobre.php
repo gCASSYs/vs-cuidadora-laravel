@@ -19,4 +19,12 @@ Class Sobre extends Model {
         'id_diferencial',
     ];
 
+    /**
+     * Diferencial associado ao conteúdo principal da página Sobre.
+     */
+    public function diferencial()
+    {
+        return $this->belongsTo(Diferencial::class, 'id_diferencial', 'id_diferencial');
+    }
+
 }

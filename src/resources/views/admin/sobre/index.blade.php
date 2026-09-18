@@ -1,3 +1,10 @@
 @extends('layout.dashboard')
-@section('title','Sobre')
-@section('content') @include('admin.sobre.listaSobre') @endsection
+{{-- Esconde somente nesta página o cabeçalho "Dashboard / Menu / Dashboard" do layout. --}}
+@section('show-page-header', 'false')
+{{-- Título usado na aba do navegador e na identificação da página. --}}
+@section('title', 'Sobre')
+
+{{-- Inclui a tabela específica desta área dentro do layout administrativo. --}}
+@section('content')
+    @include('admin.sobre.listaSobre')
+@endsection
