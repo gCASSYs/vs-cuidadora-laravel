@@ -11,7 +11,6 @@
   crossorigin="anonymous"
 ></script>
   <script src="{{ asset('admin/js/adminlte.js') }}"></script>
-  <script src="{{ asset('admin/js/script.js') }}"></script>
 <script
   src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"
   crossorigin="anonymous"

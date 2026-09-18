@@ -25,11 +25,6 @@ Route::get('/servico/{id_servico_ancora}', [ServicoController::class, 'servico']
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/banner', [BannerController::class, 'index'])->name('banner.index');
-    Route::get('/banner/novo', [BannerController::class, 'create'])->name('banner.create');
-    Route::post('/banner', [BannerController::class, 'store'])->name('banner.store');
-    Route::get('/banner/{banner}/editar', [BannerController::class, 'edit'])->name('banner.edit');
-    Route::put('/banner/{banner}', [BannerController::class, 'update'])->name('banner.update');
-    Route::patch('/banner/{banner}/status', [BannerController::class, 'status'])->name('banner.status');
     Route::get('/depoimentos', [AvaliacaoController::class, 'index'])->name('avaliacao.index');
     Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
     Route::get('/diferenciais', [DiferencialController::class, 'index'])->name('diferencial.index');
