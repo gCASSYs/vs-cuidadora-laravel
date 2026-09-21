@@ -43,9 +43,17 @@
 <option value="ativo">Ativos</option>
 <option value="inativo">Inativos</option>
 </select>
-<button type="button" class="btn btn-sm btn-primary" title="Novo registro">
-<i class="bi bi-plus-lg me-1" aria-hidden="true">
-</i>Novo registro</button>
+{{-- Alteração da Gabriele - abre o modal de cadastro --}}
+<button
+    type="button"
+    class="btn btn-sm btn-primary"
+    title="Novo registro"
+    data-bs-toggle="modal"
+    data-bs-target="#modalNovoBanner"
+>
+    <i class="bi bi-plus-lg me-1" aria-hidden="true"></i>
+    Novo registro
+</button>
 </div>
 </div>
 </div>
@@ -126,3 +134,132 @@
 </div>
 </section>
 {{-- Fim da listagem administrativa. --}}
+
+{{-- Alteração da Gabriele - modal para cadastrar novo banner --}}
+<div class="modal fade" id="modalNovoBanner" tabindex="-1" aria-labelledby="modalNovoBannerLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalNovoBannerLabel">
+                    Novo Banner
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Fechar">
+                </button>
+            </div>
+
+            <form
+                action="{{ route('admin.banner.store') }}"
+                method="POST"
+                enctype="multipart/form-data">
+
+                @csrf
+
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label for="titulo_banner" class="form-label">
+                            Título do banner
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="titulo_banner"
+                            name="titulo_banner"
+                            maxlength="35"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="img_banner" class="form-label">
+                            Imagem
+                        </label>
+
+                        <input
+                            type="file"
+                            class="form-control"
+                            id="img_banner"
+                            name="img_banner"
+                            accept=".jpg,.jpeg,.png,.webp"
+                            required>
+
+                            {{-- Alteração da Gabriele - prévia da imagem selecionada --}}
+                            <div class="mt-3 text-center">
+                                <img
+                                    id="previewBanner"
+                                    src=""
+                                    alt="Prévia do banner"
+                                    class="img-fluid rounded d-none"
+                                    style="max-height: 220px;">
+                            </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="status_banner" class="form-label">
+                            Status
+                        </label>
+
+                        <select
+                            class="form-select"
+                            id="status_banner"
+                            name="status_banner"
+                            required>
+
+                            <option value="ATIVO">
+                                Ativo
+                            </option>
+
+                            <option value="INATIVO">
+                                Inativo
+                            </option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+                        Salvar
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+{{-- Alteração da Gabriele - mostra a imagem selecionada antes de salvar --}}
+<script>
+    document.getElementById('img_banner').addEventListener('change', function(event) {
+
+        const arquivo = event.target.files[0];
+        const preview = document.getElementById('previewBanner');
+
+        if (arquivo) {
+            preview.src = URL.createObjectURL(arquivo);
+            preview.classList.remove('d-none');
+        } else {
+            preview.src = '';
+            preview.classList.add('d-none');
+        }
+
+    });
+</script>
