@@ -113,34 +113,19 @@
           aria-expanded="false"
         >
 
+          {{-- Alteração da Gabriele - avatar padrão --}}
+          <span
+            class="vs-user-avatar"
+            aria-hidden="true"
+          >
 
-          {{-- Alteração da Gabriele - usa foto se existir, senão mostra avatar padrão --}}
-          @if (auth()->user()->foto)
+            <i class="bi bi-person-fill"></i>
 
-            <img
-              src="{{ asset('vs-cuidadora/assets/' . auth()->user()->foto) }}"
-              class="user-image rounded-circle shadow"
-              alt="{{ auth()->user()->name }}"
-            >
-
-          @else
-
-            <span
-              class="vs-user-avatar"
-              aria-hidden="true"
-            >
-
-              <i class="bi bi-person-fill"></i>
-
-            </span>
-
-          @endif
+          </span>
 
 
           <span class="d-none d-md-inline">
-
-            {{ auth()->user()->name }}
-
+            Vânia Silva
           </span>
 
         </a>
@@ -155,32 +140,20 @@
           <li class="user-header vs-user-header">
 
 
-            @if (auth()->user()->foto)
+            <div class="vs-user-avatar-lg">
 
-              <img
-                src="{{ asset('vs-cuidadora/assets/' . auth()->user()->foto) }}"
-                class="rounded-circle shadow"
-                alt="{{ auth()->user()->name }}"
-              >
+              <i class="bi bi-person-fill"></i>
 
-            @else
-
-              <div class="vs-user-avatar-lg">
-
-                <i class="bi bi-person-fill"></i>
-
-              </div>
-
-            @endif
+            </div>
 
 
             <p>
 
-              {{ auth()->user()->name }}
+              Vânia Silva
 
               <small>
 
-                {{ ucfirst(strtolower(auth()->user()->nivel)) }}
+                {{ ucfirst(strtolower(auth()->user()->tipo_login_vania)) }}
 
               </small>
 
@@ -202,16 +175,16 @@
 
                   <strong>E-mail:</strong>
 
-                  {{ auth()->user()->email }}
+                  {{ auth()->user()->email_login_vania }}
 
                 </p>
 
 
                 <p class="mb-1">
 
-                  <strong>Nível:</strong>
+                  <strong>Tipo:</strong>
 
-                  {{ ucfirst(strtolower(auth()->user()->nivel)) }}
+                  {{ ucfirst(strtolower(auth()->user()->tipo_login_vania)) }}
 
                 </p>
 
@@ -221,7 +194,7 @@
                   <strong>Status:</strong>
 
 
-                  @if (auth()->user()->status === 'ATIVO')
+                  @if (auth()->user()->status_login_vania === 'ATIVO')
 
                     <span class="badge text-bg-success">
 
@@ -253,8 +226,8 @@
           <li class="user-footer">
 
 
-            {{-- Mantido igual à ideia apresentada pelo professor.
-                 A página de perfil ainda poderá ser criada depois. --}}
+            {{-- Mantido porque o professor colocou perfil,
+                 mas ainda não existe página de perfil --}}
             <a
               href="#"
               class="btn btn-outline-secondary"

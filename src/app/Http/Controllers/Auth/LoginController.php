@@ -15,10 +15,9 @@ class LoginController extends Controller
     }
 
 
-    // Alteração da Gabriele - realiza o login
+    // Alteração da Gabriele - realiza o login da Vânia
     public function login(Request $request)
     {
-        // Alteração da Gabriele - valida os dados
         $dados = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -29,24 +28,21 @@ class LoginController extends Controller
         ]);
 
 
-        // Alteração da Gabriele - somente usuários ativos podem acessar o painel
+        // Alteração da Gabriele - autentica usando tbl_login_vania
         if (Auth::attempt([
-            'email' => $dados['email'],
+            'email_login_vania' => $dados['email'],
             'password' => $dados['password'],
-            'status' => 'ATIVO',
+            'status_login_vania' => 'ATIVO',
         ], $request->boolean('remember'))) {
 
-            // Alteração da Gabriele - gera uma nova sessão
             $request->session()->regenerate();
 
 
-            // Alteração da Gabriele - direciona para o painel administrativo
             return redirect()
                 ->intended(route('admin.dashboard'));
         }
 
 
-        // Alteração da Gabriele - mensagem caso o login esteja incorreto
         return back()
             ->withErrors([
                 'email' => 'E-mail ou senha incorretos.',
@@ -60,16 +56,11 @@ class LoginController extends Controller
     {
         Auth::logout();
 
-
-        // Alteração da Gabriele - invalida a sessão atual
         $request->session()->invalidate();
 
-
-        // Alteração da Gabriele - gera um novo token
         $request->session()->regenerateToken();
 
 
-        // Alteração da Gabriele - volta para a tela de login
         return redirect()
             ->route('login')
             ->with('success', 'Logout realizado com sucesso.');
