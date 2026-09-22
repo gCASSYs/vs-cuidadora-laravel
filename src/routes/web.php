@@ -41,7 +41,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
     Route::get('/diferenciais', [DiferencialController::class, 'index'])->name('diferencial.index');
     Route::get('/sobre', [AdminSobreController::class, 'index'])->name('sobre.index');
+
     Route::get('/servicos', [AdminServicoController::class, 'index'])->name('servico.index');
+    // Alteração da Gabriele - cadastrar novo serviço
+    Route::post('/servicos', [AdminServicoController::class, 'store'])
+    ->name('servico.store');
+
+    // Alteração da Gabriele - atualizar serviço
+    Route::put('/servicos/{id}', [AdminServicoController::class, 'update'])
+    ->name('servico.update');
+
+    // Alteração da Gabriele - ativar ou desativar serviço
+    Route::patch('/servicos/{id}', [AdminServicoController::class, 'status'])
+    ->name('servico.status');
+
     Route::get('/banners-secao', [BannerSecaoController::class, 'index'])->name('banner-secao.index');
     Route::get('/logos', [LogoController::class, 'index'])->name('logo.index');
     Route::get('/contato', [ContatoController::class, 'index'])->name('contato.index');
