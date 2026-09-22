@@ -171,7 +171,7 @@
                                     <tbody>
 
 
-                                        @forelse ($servicos as $servico)
+                                        @forelse ($servico as $servico)
 
                                             {{-- Alteração da Gabriele - dados usados na pesquisa e filtro --}}
                                             <tr
@@ -383,7 +383,7 @@
                                 Total de serviços:
 
                                 <strong>
-                                    {{ $servicos->count() }}
+                                    {{ $servico->count() }}
                                 </strong>
 
                             </div>
@@ -987,7 +987,7 @@
 
                 document
                     .getElementById('formEditarServico')
-                    .action = '/admin/servicos/' + id;
+                    .action = '/admin/servico/' + id;
 
 
                 // Alteração da Gabriele - limpa nova imagem
@@ -1125,7 +1125,7 @@
         document.getElementById('servico-status-filter');
 
 
-    function filtrarServicos() {
+    function filtrarServico() {
 
         const pesquisa =
             campoPesquisaServico.value
@@ -1197,13 +1197,13 @@
 
     campoPesquisaServico.addEventListener(
         'input',
-        filtrarServicos
+        filtrarServico
     );
 
 
     filtroStatusServico.addEventListener(
         'change',
-        filtrarServicos
+        filtrarServico
     );
 
 </script>

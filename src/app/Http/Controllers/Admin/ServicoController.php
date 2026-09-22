@@ -16,7 +16,7 @@ class ServicoController extends Controller
     public function index()
     {
         return view('admin.servico.index', [
-            'servicos' => Servico::orderByDesc('id_servico_ancora')->get()
+            'servico' => Servico::orderByDesc('id_servico_ancora')->get()
         ]);
     }
 
@@ -39,7 +39,7 @@ class ServicoController extends Controller
             'titulo_servico_ancora' => $dados['titulo_servico_ancora'],
             'subtitulo_servico_ancora' => $dados['subtitulo_servico_ancora'] ?? null,
             'texto_servico_ancora' => $dados['texto_servico_ancora'] ?? null,
-            'img_servico_ancora' => 'servicos/sem-imagem.jpg',
+            'img_servico_ancora' => 'servico/sem-imagem.jpg',
             'status_servico_ancora' => $dados['status_servico_ancora'],
         ]);
 
@@ -57,7 +57,7 @@ class ServicoController extends Controller
 
 
         // Alteração da Gabriele - pasta das imagens de serviços
-        $pastaServico = public_path('vs-cuidadora/assets/servicos');
+        $pastaServico = public_path('vs-cuidadora/assets/servico');
 
 
         // Alteração da Gabriele - garante que a pasta exista
@@ -69,7 +69,7 @@ class ServicoController extends Controller
 
 
         // Alteração da Gabriele - atualiza caminho da imagem no banco
-        $servico->img_servico_ancora = 'servicos/' . $nomeImagem;
+        $servico->img_servico_ancora = 'servico/' . $nomeImagem;
         $servico->save();
 
 
@@ -114,7 +114,7 @@ class ServicoController extends Controller
                 . $imagem->extension();
 
 
-            $pastaServico = public_path('vs-cuidadora/assets/servicos');
+            $pastaServico = public_path('vs-cuidadora/assets/servico');
 
             File::ensureDirectoryExists($pastaServico);
 
@@ -135,7 +135,7 @@ class ServicoController extends Controller
             $imagem->move($pastaServico, $nomeImagem);
 
 
-            $caminhoImagem = 'servicos/' . $nomeImagem;
+            $caminhoImagem = 'servico/' . $nomeImagem;
         }
 
 
