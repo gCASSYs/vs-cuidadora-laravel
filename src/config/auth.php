@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use App\Models\LoginVania;
 
 return [
 
@@ -62,15 +62,13 @@ return [
     */
 
     'providers' => [
+
+        // Alteração da Gabriele - autenticação da Vânia
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', User::class),
+            'model' => LoginVania::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

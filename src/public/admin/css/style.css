@@ -78,8 +78,461 @@ html::-webkit-scrollbar-thumb:hover { background: var(--vs-verde-escuro); }
 /* Destaque visível para navegação por teclado. */
 :focus-visible { outline: 3px solid rgba(149,177,89,.85); outline-offset: 2px; }
 
+
+
+/* =========================================================
+   Alteração da Gabriele - Login VS Cuidadora
+   ========================================================= */
+
+.vs-login-body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            rgba(52, 64, 27, 0.82),
+            rgba(52, 64, 27, 0.92)
+        ),
+        #34401b;
+
+    font-family: "Rubik", sans-serif;
+}
+
+
+.vs-login-container {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+
+.vs-login-box {
+    width: 100%;
+    max-width: 430px;
+
+    padding: 40px;
+
+    background: #ffffff;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+
+.vs-login-logo {
+    margin-bottom: 25px;
+
+    text-align: center;
+}
+
+
+.vs-login-logo img {
+    width: 100%;
+    max-width: 210px;
+    height: auto;
+}
+
+
+.vs-login-header {
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+
+.vs-login-header h1 {
+    margin: 0 0 8px;
+
+    color: #34401b;
+
+    font-family: "Fresca", sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+}
+
+
+.vs-login-header p {
+    margin: 0;
+
+    color: #73655a;
+
+    font-size: 14px;
+}
+
+
+.vs-login-group {
+    margin-bottom: 20px;
+}
+
+
+.vs-login-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #34401b;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.vs-login-input {
+    position: relative;
+}
+
+
+.vs-login-input i {
+    position: absolute;
+
+    top: 50%;
+    left: 14px;
+
+    transform: translateY(-50%);
+
+    color: #62733d;
+
+    font-size: 16px;
+}
+
+
+.vs-login-input input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px 15px 13px 42px;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #2e2e2e;
+
+    font-family: "Rubik", sans-serif;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.vs-login-input input:focus {
+    border-color: #62733d;
+
+    box-shadow:
+        0 0 0 3px rgba(98, 115, 61, 0.16);
+}
+
+
+.vs-login-options {
+    margin-bottom: 22px;
+
+    color: #73655a;
+
+    font-size: 13px;
+}
+
+
+.vs-login-options label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    cursor: pointer;
+}
+
+
+.vs-login-options input {
+    accent-color: #62733d;
+}
+
+
+.vs-login-button {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: #62733d;
+
+    color: #ffffff;
+
+    font-family: "Rubik", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.vs-login-button:hover {
+    background: #34401b;
+
+    transform: translateY(-1px);
+}
+
+
+.vs-login-alert {
+    margin-bottom: 20px;
+
+    padding: 12px 14px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+}
+
+
+.vs-login-error {
+    color: #842029;
+
+    background: #f8d7da;
+
+    border: 1px solid #f1aeb5;
+}
+
+
+.vs-login-success {
+    color: #34401b;
+
+    background: rgba(149, 177, 89, 0.20);
+
+    border: 1px solid rgba(98, 115, 61, 0.30);
+}
+
+
+.vs-login-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+
+    border-top: 1px solid #d9d9d9;
+
+    text-align: center;
+
+    color: #73655a;
+}
+
+
+.vs-login-footer p {
+    margin: 0;
+
+    color: #34401b;
+
+    font-family: "Fresca", sans-serif;
+    font-size: 22px;
+}
+
+
+.vs-login-footer small {
+    font-size: 11px;
+}
+
+
+@media (max-width: 480px) {
+
+    .vs-login-body {
+        padding: 15px;
+    }
+
+
+    .vs-login-box {
+        padding: 30px 22px;
+    }
+
+
+    .vs-login-logo img {
+        max-width: 180px;
+    }
+
+
+    .vs-login-header h1 {
+        font-size: 30px;
+    }
+
+}
+
+
+/* =========================================================
+   Alteração da Gabriele - card de usuário do painel
+   ========================================================= */
+
+.user-menu .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #34401b;
+}
+
+
+.user-menu .dropdown-toggle:hover {
+    color: #62733d;
+}
+
+
+.user-menu .dropdown-toggle::after {
+    margin-left: 4px;
+}
+
+
+.user-menu .dropdown-menu {
+    min-width: 280px;
+
+    overflow: hidden;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 30px rgba(52, 64, 27, 0.15);
+}
+
+
+.user-image {
+    width: 32px;
+    height: 32px;
+
+    object-fit: cover;
+}
+
+
+.vs-user-avatar {
+    width: 32px;
+    height: 32px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #62733d;
+
+    color: #ffffff;
+
+    font-size: 17px;
+}
+
+
+.vs-user-header {
+    padding: 22px;
+
+    text-align: center;
+
+    background: #62733d;
+
+    color: #ffffff;
+}
+
+
+.vs-user-header img {
+    width: 80px;
+    height: 80px;
+
+    margin-bottom: 10px;
+
+    object-fit: cover;
+}
+
+
+.vs-user-avatar-lg {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    color: #62733d;
+
+    font-size: 38px;
+}
+
+
+.vs-user-header p {
+    margin: 0;
+
+    font-family: "Rubik", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.vs-user-header small {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 12px;
+    font-weight: 400;
+
+    opacity: 0.9;
+}
+
+
+.user-menu .user-body {
+    padding: 18px;
+
+    color: #2e2e2e;
+
+    font-size: 13px;
+}
+
+
+.user-menu .user-body strong {
+    color: #34401b;
+}
+
+
+.user-menu .user-footer {
+    padding: 12px;
+
+    background: #f5f7f0;
+
+    border-top: 1px solid #d9d9d9;
+}
+
+
+@media (max-width: 767px) {
+
+    .user-menu .dropdown-menu {
+        min-width: 260px;
+    }
+
+}
+
+
+
 /* Adaptação do painel para celulares e telas estreitas. */
 @media (max-width: 767.98px) { .vs-admin-shell { display: block !important; } .vs-admin-shell > aside { width: 100% !important; flex-basis: auto; } .vs-admin-shell > aside::before { inset: auto 1rem 0; width: auto; height: 4px; border-radius: 999px 999px 0 0; } .vs-admin-shell > aside nav { flex-direction: row !important; flex-wrap: wrap; } .vs-admin-shell > aside nav > * { flex: 1 1 10rem; } .vs-admin-main { padding: 1.25rem !important; } .vs-admin-shell.is-sidebar-collapsed > aside { display: none; } }
 
 /* Reduz movimentos quando essa preferência está ativa no dispositivo. */
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+
