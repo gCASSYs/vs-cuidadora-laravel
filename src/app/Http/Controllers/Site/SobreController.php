@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Sobre;
+use App\Models\Diferencial;
 use App\Models\SobreResumo;
+
 
 class SobreController extends Controller{
 
@@ -22,9 +24,13 @@ public function sobre(){
         'terceiro_ponto_sobre_painel' => 'Compromisso com segurança, respeito e bem-estar.',
     ];
 
+    $listaDiferencial = Diferencial::where('status_diferencial', 'ATIVO')
+      ->inRandomOrder()
+      ->get();
+
     $SobreResumo = SobreResumo::where('status_sobre_resumo', 'ATIVO')->first();
 
 
-    return view('site.sobre.sobre', compact('Sobre', 'SobrePainel', 'SobreResumo'));
+    return view('site.sobre.sobre', compact('Sobre', 'listaDiferencial', 'SobrePainel', 'SobreResumo'));
 }
 }
