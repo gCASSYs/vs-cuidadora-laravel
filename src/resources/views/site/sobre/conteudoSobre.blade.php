@@ -54,21 +54,14 @@
                 <h2>Cuidar bem é oferecer presença, atenção e respeito em cada detalhe.</h2>
             </div>
             <div class="wow dif-cards animate__animated animate__fadeInUp">
+                @foreach ($listaDiferencial as $lista)
                 <article>
-                    <h5>Atendimento Humanizado</h5>
-                    <img src="{{ asset('vs-cuidadora/assets/bolha de fala.png')}}" alt="Atendimento humanizado - Senior Life SP">
-                    <p>Cuidado feito com paciência, escuta e carinho, respeitando a rotina e as necessidades de cada idoso.</p>
+                    <h5>{{$lista->titulo_diferencial}}</h5>
+                    <img src="{{ asset("vs-cuidadora/$lista->icone_diferencial") }}" alt="{{$lista->titulo_diferencial}}">
+                    <p>{{$lista->texto_diferencial}}</p>
                 </article>
-                <article>
-                    <h5>Cuidado individual</h5>
-                    <img src="{{ asset('vs-cuidadora/assets/suporte.png')}}" alt="Suporte personalizado - Senior Life SP">
-                    <p>Acompanhamento próximo e personalizado, pensado conforme a condição, os horários e a realidade da família.</p>
-                </article>
-                <article>
-                    <h5>Confiança e responsabilidade</h5>
-                    <img src="{{ asset('vs-cuidadora/assets/escudo.png')}}" alt="Confiança e segurança - Senior Life SP">
-                    <p>Presença atenta, comunicação com a família e compromisso com o bem-estar do idoso.</p>
-                </article>
+                
+                @endforeach
             </div>
         </section>
             <hr>

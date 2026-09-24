@@ -159,8 +159,11 @@ Route::middleware('auth')->group(function () {
             |--------------------------------------------------------------------------
             */
 
-            Route::get('/diferenciais', [DiferencialController::class, 'index'])
-                ->name('diferencial.index');
+            // Alteração de André - CRUD DIFERENCIAL
+            Route::get('/diferenciais', [DiferencialController::class, 'index'])->name('diferencial.index');
+            Route::post('/diferenciais', [DiferencialController::class, 'store'])->name('diferencial.store');
+            Route::put('/diferenciais/{id}', [DiferencialController::class, 'update'])->name('diferencial.update');
+            Route::patch('/diferenciais/{id}', [DiferencialController::class, 'status'])->name('diferencial.status');
 
 
             /*
@@ -214,8 +217,12 @@ Route::middleware('auth')->group(function () {
             |--------------------------------------------------------------------------
             */
 
+            // Alteração de André - CRUD LOGOS
             Route::get('/logos', [LogoController::class, 'index'])
                 ->name('logo.index');
+            Route::post('/logos', [LogoController::class, 'store'])->name('logo.store');
+            Route::put('/logos/{id}', [LogoController::class, 'update'])->name('logo.update');
+            Route::patch('/logos/{id}', [LogoController::class, 'status'])->name('logo.status');
 
 
             /*
