@@ -25,4 +25,8 @@ class Cliente extends Model{
         return $this->hasMany(Avaliacao::class, 'id_cliente', 'id_cliente');
     }
 
+    public function ClienteAgendamento(){
+        return $this->hasMany(Agendamento::class, 'id_cliente', 'id_cliente');
+    }
+
 }

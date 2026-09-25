@@ -1,4 +1,3 @@
-{{-- Listagem administrativa dos banners --}}
 <section class="admin-list-page">
 
     <div class="app-content-header admin-page-header">
@@ -8,7 +7,7 @@
             <div class="row">
 
                 <div class="col-sm-6">
-                    <h1 class="mb-0 fs-3">Banners</h1>
+                    <h1 class="mb-0 fs-3">Agendamentos</h1>
                 </div>
 
                 <div class="col-sm-6">
@@ -24,7 +23,7 @@
                             </li>
 
                             <li class="breadcrumb-item active">
-                                Banners
+                                Agendamentos
                             </li>
 
                         </ol>
@@ -58,7 +57,7 @@
                                 <div class="col-12 col-md-4">
 
                                     <h3 class="card-title">
-                                        Banners cadastrados
+                                        Agendamentos cadastrados
                                     </h3>
 
                                 </div>
@@ -69,34 +68,31 @@
                                     <div class="d-flex flex-wrap justify-content-md-end gap-2">
 
 
-                                        {{-- Alteração da Gabriele - pesquisa --}}
+
                                         <div class="input-group input-group-sm w-auto">
 
                                             <span class="input-group-text">
 
                                                 <i
                                                     class="bi bi-search"
-                                                    aria-hidden="true"
-                                                ></i>
+                                                    aria-hidden="true"></i>
 
                                             </span>
 
                                             <input
                                                 type="search"
-                                                id="banner-search"
+                                                id="agendamento-search"
                                                 class="form-control admin-search-input"
-                                                placeholder="Pesquisar banners"
-                                                aria-label="Pesquisar banners"
-                                            >
+                                                placeholder="Pesquisar agendamentos"
+                                                aria-label="Pesquisar agendamentos">
 
                                         </div>
 
 
-                                        {{-- Alteração da Gabriele - filtro por status --}}
+
                                         <select
-                                            id="banner-status-filter"
-                                            class="form-select form-select-sm w-auto"
-                                        >
+                                            id="agendamento-status-filter"
+                                            class="form-select form-select-sm w-auto">
 
                                             <option value="all">
                                                 Todos
@@ -113,19 +109,7 @@
                                         </select>
 
 
-                                        {{-- Alteração da Gabriele - botão novo banner --}}
-                                        <button
-                                            type="button"
-                                            class="btn btn-sm btn-primary"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#modalNovoBanner"
-                                        >
 
-                                            <i class="bi bi-plus-lg me-1"></i>
-
-                                            Novo Banner
-
-                                        </button>
 
                                     </div>
 
@@ -148,8 +132,10 @@
                                         <tr>
 
                                             <th>Id</th>
-                                            <th>Imagem</th>
-                                            <th>Título</th>
+                                            <th>Cliente</th>
+                                            <th>Idoso</th>
+                                            <th>Serviço</th>
+                                            <th>Horário</th>
                                             <th>Status</th>
                                             <th class="text-end">Ações</th>
 
@@ -158,177 +144,173 @@
                                     </thead>
 
 
-                                    <tbody id="banner-table-body">
+                                    <tbody id="agendamento-table-body">
 
 
-                                        @forelse ($banners as $banner)
-
-                                            {{-- Alteração da Gabriele - dados usados na pesquisa e filtro --}}
-                                            <tr
-                                                class="banner-row"
-                                                data-titulo="{{ strtolower($banner->titulo_banner) }}"
-                                                data-status="{{ $banner->status_banner }}"
-                                            >
+                                        @forelse ($listaAgendamento as $lista)
 
 
-                                                <td>
-                                                    {{ $banner->id_banner }}
-                                                </td>
+                                        <tr
+                                            class="agendamento-row"
+                                            data-dia="{{ strtolower($lista->dia_agendamento_cliente) }}"
+                                            data-status="{{ $lista->status_agendamento_cliente }}">
 
 
-                                                <td>
+                                            <td>
+                                                {{ $lista->id_agendamento_cliente }}
+                                            </td>
 
-                                                    @if ($banner->img_banner)
+                                            <td>
+                                                {{ $lista->id_agendamento_cliente }}
+                                            </td>
 
-                                                        <img
-                                                            src="{{ asset('vs-cuidadora/assets/' . $banner->img_banner) }}"
-                                                            alt="{{ $banner->titulo_banner }}"
-                                                            class="rounded admin-table-thumbnail"
-                                                        >
+                                            <td>
+                                                {{ $lista->id_agendamento_cliente }}
+                                            </td>
+
+                                            <td>
+
+                                                @if ($lista->dia_agendamento_cliente)
+
+                                                {{ $lista->dia_agendamento_cliente}}
+
+                                                @else
+
+                                                <span class="text-muted">
+                                                    Sem agendamento
+                                                </span>
+
+                                                @endif
+
+                                            </td>
+
+
+                                            <td>
+
+                                                <span class="admin-record-label">
+                                                    {{ $lista->horario_agendamento_cliente }}
+                                                </span>
+
+                                            </td>
+
+
+                                            <td>
+
+                                                @if ($lista->status_agendamento_cliente === 'ATIVO')
+
+                                                <span class="badge text-bg-success">
+                                                    Ativo
+                                                </span>
+
+                                                @else
+
+                                                <span class="badge text-bg-warning">
+                                                    Inativo
+                                                </span>
+
+                                                @endif
+
+                                            </td>
+
+
+                                            <td class="text-end">
+
+                                                <div class="btn-group btn-group-sm">
+
+
+                                                    
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-outline-secondary btn-editar-banner"
+                                                        title="Editar agendamento"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#modalEditarAgendamento"
+
+                                                        data-id="{{ $lista->id_agendamento_cliente }}"
+
+                                                        data-dia="{{ $lista->dia_agendamento_cliente }}"
+
+                                                        data-horario="{{ $lista->horario_agendamento_cliente }}"
+
+                                                        data-status="{{ $lista->status_agendamento_cliente }}">
+
+                                                        <i class="bi bi-pencil"></i>
+
+                                                    </button>
+
+
+
+                                                    
+                                                    @if ($lista->status_agendamento_cliente === 'ATIVO')
+
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-outline-danger btn-status-banner"
+                                                        title="Desativar agendamento"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#modalStatusAgendamento"
+
+                                                        data-url="{{ route('admin.agendemento.status', $lista->id_agendamento_cliente) }}"
+
+                                                        data-status="ATIVO">
+
+                                                        
+                                                        <i class="bi bi-eye-fill"></i>
+
+                                                    </button>
 
                                                     @else
 
-                                                        <span class="text-muted">
-                                                            Sem imagem
-                                                        </span>
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-outline-success btn-status-banner"
+                                                        title="Ativar banner"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#modalStatusBanner"
+
+                                                        data-url="{{ route('admin.agendamento.status', $lista->id_agendamento_cliente) }}"
+
+                                                        data-status="INATIVO">
+
+                                                        
+                                                        <i class="bi bi-eye-slash-fill"></i>
+
+                                                    </button>
 
                                                     @endif
 
-                                                </td>
 
+                                                </div>
 
-                                                <td>
+                                            </td>
 
-                                                    <span class="admin-record-label">
-                                                        {{ $banner->titulo_banner }}
-                                                    </span>
-
-                                                </td>
-
-
-                                                <td>
-
-                                                    @if ($banner->status_banner === 'ATIVO')
-
-                                                        <span class="badge text-bg-success">
-                                                            Ativo
-                                                        </span>
-
-                                                    @else
-
-                                                        <span class="badge text-bg-warning">
-                                                            Inativo
-                                                        </span>
-
-                                                    @endif
-
-                                                </td>
-
-
-                                                <td class="text-end">
-
-                                                    <div class="btn-group btn-group-sm">
-
-
-                                                        {{-- Alteração da Gabriele - editar banner --}}
-                                                        <button
-                                                            type="button"
-                                                            class="btn btn-outline-secondary btn-editar-banner"
-                                                            title="Editar banner"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#modalEditarBanner"
-
-                                                            data-id="{{ $banner->id_banner }}"
-
-                                                            data-titulo="{{ $banner->titulo_banner }}"
-
-                                                            data-imagem="{{ asset('vs-cuidadora/assets/' . $banner->img_banner) }}"
-
-                                                            data-status="{{ $banner->status_banner }}"
-                                                        >
-
-                                                            <i class="bi bi-pencil"></i>
-
-                                                        </button>
-
-
-
-                                                        {{-- Alteração da Gabriele - ativar ou desativar banner --}}
-                                                        @if ($banner->status_banner === 'ATIVO')
-
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-outline-danger btn-status-banner"
-                                                                title="Desativar banner"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#modalStatusBanner"
-
-                                                                data-url="{{ route('admin.banner.status', $banner->id_banner) }}"
-
-                                                                data-status="ATIVO"
-                                                            >
-
-                                                                {{-- Olho aberto = banner ativo --}}
-                                                                <i class="bi bi-eye-fill"></i>
-
-                                                            </button>
-
-                                                        @else
-
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-outline-success btn-status-banner"
-                                                                title="Ativar banner"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#modalStatusBanner"
-
-                                                                data-url="{{ route('admin.banner.status', $banner->id_banner) }}"
-
-                                                                data-status="INATIVO"
-                                                            >
-
-                                                                {{-- Olho fechado = banner inativo --}}
-                                                                <i class="bi bi-eye-slash-fill"></i>
-
-                                                            </button>
-
-                                                        @endif
-
-
-                                                    </div>
-
-                                                </td>
-
-                                            </tr>
+                                        </tr>
 
 
                                         @empty
 
-                                            <tr>
+                                        <tr>
 
-                                                <td
-                                                    colspan="5"
-                                                    class="text-center py-4 text-muted"
-                                                >
-                                                    Nenhum banner encontrado.
-                                                </td>
+                                            <td
+                                                colspan="5"
+                                                class="text-center py-4 text-muted">
+                                                Nenhum agendamento encontrado.
+                                            </td>
 
-                                            </tr>
+                                        </tr>
 
                                         @endforelse
 
 
-                                        {{-- Alteração da Gabriele - aparece quando pesquisa não encontra nada --}}
+                                       
                                         <tr
-                                            id="banner-sem-resultado"
-                                            class="d-none"
-                                        >
+                                            id="agendamento-sem-resultado"
+                                            class="d-none">
 
                                             <td
                                                 colspan="5"
-                                                class="text-center py-4 text-muted"
-                                            >
-                                                Nenhum banner encontrado.
+                                                class="text-center py-4 text-muted">
+                                                Nenhum agendamento encontrado.
                                             </td>
 
                                         </tr>
@@ -348,10 +330,10 @@
 
                             <div class="float-start pt-1 fs-7 text-body-secondary">
 
-                                Total de banners:
+                                Total de agendamento:
 
                                 <strong>
-                                    {{ $banners->count() }}
+                                    {{ $lista->count() }}
                                 </strong>
 
                             </div>
@@ -390,158 +372,7 @@
 
 
 
-{{-- Alteração da Gabriele - modal para cadastrar banner --}}
-<div
-    class="modal fade"
-    id="modalNovoBanner"
-    tabindex="-1"
-    aria-hidden="true"
->
 
-    <div class="modal-dialog">
-
-        <div class="modal-content">
-
-
-            <div class="modal-header">
-
-                <h5 class="modal-title">
-                    Novo Banner
-                </h5>
-
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                ></button>
-
-            </div>
-
-
-            <form
-                action="{{ route('admin.banner.store') }}"
-                method="POST"
-                enctype="multipart/form-data"
-            >
-
-                @csrf
-
-
-                <div class="modal-body">
-
-
-                    <div class="mb-3">
-
-                        <label
-                            for="titulo_banner"
-                            class="form-label"
-                        >
-                            Título do banner
-                        </label>
-
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="titulo_banner"
-                            name="titulo_banner"
-                            maxlength="35"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="mb-3">
-
-                        <label
-                            for="img_banner"
-                            class="form-label"
-                        >
-                            Imagem
-                        </label>
-
-                        <input
-                            type="file"
-                            class="form-control"
-                            id="img_banner"
-                            name="img_banner"
-                            accept=".jpg,.jpeg,.png,.webp"
-                            required
-                        >
-
-
-                        {{-- Alteração da Gabriele - prévia da imagem --}}
-                        <div class="mt-3 text-center">
-
-                            <img
-                                id="previewBanner"
-                                src=""
-                                alt="Prévia do banner"
-                                class="img-fluid rounded d-none"
-                                style="max-height: 220px;"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="mb-3">
-
-                        <label
-                            for="status_banner"
-                            class="form-label"
-                        >
-                            Status
-                        </label>
-
-                        <select
-                            class="form-select"
-                            id="status_banner"
-                            name="status_banner"
-                        >
-
-                            <option value="ATIVO">
-                                Ativo
-                            </option>
-
-                            <option value="INATIVO">
-                                Inativo
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-
-                <div class="modal-footer">
-
-                    <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                    >
-                        Cancelar
-                    </button>
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary"
-                    >
-                        Salvar
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</div>
 
 
 
@@ -550,8 +381,7 @@
     class="modal fade"
     id="modalEditarBanner"
     tabindex="-1"
-    aria-hidden="true"
->
+    aria-hidden="true">
 
     <div class="modal-dialog">
 
@@ -567,8 +397,7 @@
                 <button
                     type="button"
                     class="btn-close"
-                    data-bs-dismiss="modal"
-                ></button>
+                    data-bs-dismiss="modal"></button>
 
             </div>
 
@@ -576,8 +405,7 @@
             <form
                 id="formEditarBanner"
                 method="POST"
-                enctype="multipart/form-data"
-            >
+                enctype="multipart/form-data">
 
                 @csrf
                 @method('PUT')
@@ -598,8 +426,7 @@
                             name="titulo_banner"
                             class="form-control"
                             maxlength="35"
-                            required
-                        >
+                            required>
 
                     </div>
 
@@ -617,8 +444,7 @@
                                 src=""
                                 alt="Imagem atual"
                                 class="img-fluid rounded"
-                                style="max-height: 220px;"
-                            >
+                                style="max-height: 220px;">
 
                         </div>
 
@@ -636,8 +462,7 @@
                             id="editar_img_banner"
                             name="img_banner"
                             class="form-control"
-                            accept=".jpg,.jpeg,.png,.webp"
-                        >
+                            accept=".jpg,.jpeg,.png,.webp">
 
                         <small class="text-muted">
                             Deixe vazio para manter a imagem atual.
@@ -653,8 +478,7 @@
                             src=""
                             alt="Prévia"
                             class="img-fluid rounded d-none"
-                            style="max-height: 220px;"
-                        >
+                            style="max-height: 220px;">
 
                     </div>
 
@@ -668,8 +492,7 @@
                         <select
                             id="editar_status_banner"
                             name="status_banner"
-                            class="form-select"
-                        >
+                            class="form-select">
 
                             <option value="ATIVO">
                                 Ativo
@@ -691,15 +514,13 @@
                     <button
                         type="button"
                         class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                    >
+                        data-bs-dismiss="modal">
                         Cancelar
                     </button>
 
                     <button
                         type="submit"
-                        class="btn btn-primary"
-                    >
+                        class="btn btn-primary">
                         Salvar alterações
                     </button>
 
@@ -720,15 +541,13 @@
     class="modal fade"
     id="modalStatusBanner"
     tabindex="-1"
-    aria-hidden="true"
->
+    aria-hidden="true">
 
     <div class="modal-dialog">
 
         <form
             id="formStatusBanner"
-            method="POST"
-        >
+            method="POST">
 
             @csrf
             @method('PATCH')
@@ -741,16 +560,14 @@
 
                     <h5
                         class="modal-title"
-                        id="tituloModalStatusBanner"
-                    >
+                        id="tituloModalStatusBanner">
                         Alterar status
                     </h5>
 
                     <button
                         type="button"
                         class="btn-close"
-                        data-bs-dismiss="modal"
-                    ></button>
+                        data-bs-dismiss="modal"></button>
 
                 </div>
 
@@ -759,8 +576,7 @@
 
                     <p
                         id="textoModalStatusBanner"
-                        class="mb-0"
-                    ></p>
+                        class="mb-0"></p>
 
                 </div>
 
@@ -770,16 +586,14 @@
                     <button
                         type="button"
                         class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                    >
+                        data-bs-dismiss="modal">
                         Cancelar
                     </button>
 
                     <button
                         type="submit"
                         id="btnConfirmarStatusBanner"
-                        class="btn btn-success"
-                    >
+                        class="btn btn-success">
                         Confirmar
                     </button>
 

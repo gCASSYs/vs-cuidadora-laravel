@@ -868,12 +868,12 @@
 
                 document
                     .getElementById('formEditarBanner')
-                    .action = '/admin/banner/' + id;
+                    .action = '/admin/banner-secao/' + id;
 
 
                 // Limpa uma nova imagem selecionada anteriormente
                 document
-                    .getElementById('editar_img_banner')
+                    .getElementById('editar_img_banner_secao')
                     .value = '';
 
 
@@ -892,7 +892,7 @@
 
     // Alteração da Gabriele - prévia da nova imagem
     document
-        .getElementById('editar_img_banner')
+        .getElementById('editar_img_banner_secao')
         .addEventListener('change', function() {
 
             const arquivo = this.files[0];

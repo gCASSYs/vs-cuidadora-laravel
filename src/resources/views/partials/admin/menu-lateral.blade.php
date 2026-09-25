@@ -60,23 +60,16 @@
 
         <a
             class="nav-link text-white"
-            href="#"
+            href="{{ route('admin.agendamento.index') }}"
         >
             Agendamentos
         </a>
 
-        <a
-            class="nav-link text-white
-            {{ request()->routeIs('admin.relatorio.*') ? 'bg-secondary rounded' : '' }}"
-            href="{{ route('admin.relatorio.index') }}"
-        >
-            Relatórios
-        </a>
 
-
+<!-- 
         {{-- ============================================================ --}}
         {{-- CONTEÚDO DO SITE --}}
-        {{-- ============================================================ --}}
+        {{-- ============================================================ --}} -->
 
         <small class="text-white-50 mt-3 px-2">
             CONTEÚDO DO SITE
@@ -98,8 +91,8 @@
         {{-- Banners de seção --}}
         <a
             class="nav-link text-white
-            {{ request()->routeIs('admin.banner-secao.*') ? 'bg-secondary rounded' : '' }}"
-            href="{{ route('admin.banner-secao.index') }}"
+            {{ request()->routeIs('admin.bannerSecao.*') ? 'bg-secondary rounded' : '' }}"
+            href="{{ route('admin.bannerSecao.index') }}"
         >
             Banners de seção
         </a>
@@ -139,13 +132,13 @@
 
 
 
-        {{-- Depoimentos --}}
+        {{-- Avaliações --}}
         <a
             class="nav-link text-white
             {{ request()->routeIs('admin.avaliacao.*') ? 'bg-secondary rounded' : '' }}"
             href="{{ route('admin.avaliacao.index') }}"
         >
-            Depoimentos
+            Avaliações
         </a>
 
 
@@ -206,8 +199,7 @@
             Conta
         </a>
 
-<<<<<<< Updated upstream
-=======
+<!-- MINHAS ALTERAÇÕES -->
         {{-- Páginas que administram o conteúdo exibido no site público. --}}
         <small class="text-white-50 mt-3 px-2">CONTEÚDO DO SITE</small>
         <a class="nav-link text-white {{ request()->routeIs('admin.banner.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.banner.index') }}">Banners</a>
@@ -219,7 +211,7 @@
         <a class="nav-link text-white {{ request()->routeIs('admin.faq.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.faq.index') }}">FAQ</a>
         <a class="nav-link text-white {{ request()->routeIs('admin.contato.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.contato.index') }}">Contato</a>
         <a class="nav-link text-white {{ request()->routeIs('admin.horarios.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.horarios.index') }}">Horários</a>
->>>>>>> Stashed changes
+
 
     </nav>
 

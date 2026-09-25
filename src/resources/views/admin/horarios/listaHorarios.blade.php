@@ -248,7 +248,7 @@
 
                                                         data-id="{{ $lista->id_horarios }}"
 
-                                                        data-telefon="{{ $lista->telefone_horarios }}"
+                                                        data-telefone="{{ $lista->telefone_horarios }}"
 
                                                         data-formato="{{ $lista->formato_horarios }}"
 
@@ -471,7 +471,7 @@
 
 
 
-           
+
                     <div class="mb-3">
 
                         <label class="form-label">
@@ -489,7 +489,7 @@
                     </div>
 
 
-                  
+
                     <div class="mb-3">
 
                         <label class="form-label">
@@ -653,7 +653,7 @@
                     </div>
 
 
-                  
+
                     <div class="mb-3">
 
                         <label class="form-label">
@@ -782,7 +782,7 @@
 
                     <button
                         type="submit"
-                        id="btnConfirmarHorario"
+                        id="btnConfirmarStatusHorario"
                         class="btn btn-success">
                         Confirmar
                     </button>
@@ -821,6 +821,10 @@
                 const regiao =
                     this.dataset.regiao;
 
+
+                const formato =
+                    this.dataset.formato;
+                              
                 const horario =
                     this.dataset.horario;
 
@@ -830,7 +834,7 @@
 
                 document
                     .getElementById('editar_formato_horario')
-                    .value = telefone;
+                    .src = formato;
 
 
                 document
@@ -849,7 +853,7 @@
 
                 document
                     .getElementById('formEditarHorario')
-                    .action = '/admin/horario/' + id;
+                    .action = '/admin/horarios/' + id;
 
 
 
@@ -923,7 +927,7 @@
             // Banner está inativo e será ativado
             else {
 
-                telefone.textContent =
+                texto.textContent =
                     'Ativar horário';
 
                 texto.textContent =

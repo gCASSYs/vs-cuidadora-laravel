@@ -52,7 +52,7 @@ class BannerSecaoController extends Controller
 
         $pastaBannerSecao = public_path('vs-cuidadora/assets/banner-secao');
 
-        File::ensuredDirectoryExists($pastaBannerSecao);
+        File::ensureDirectoryExists($pastaBannerSecao);
 
         // SALVAR AS IMAGENS
         
@@ -103,7 +103,7 @@ class BannerSecaoController extends Controller
 
             $pastaBannerSecao = public_path('vs-cuidadora/assets/banner-secao');
 
-            File::ensuredDirectoryExists($pastaBannerSecao);
+            File::ensureDirectoryExists($pastaBannerSecao);
 
             // CAMINHO ANTIGO
 

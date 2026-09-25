@@ -8,7 +8,6 @@ use App\Http\Controllers\Site\ServicoController;
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BannerController;
-use App\Http\Controllers\Admin\AvaliacaoController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\DiferencialController;
 use App\Http\Controllers\Admin\SobreController as AdminSobreController;
@@ -16,7 +15,9 @@ use App\Http\Controllers\Admin\ServicoController as AdminServicoController;
 use App\Http\Controllers\Admin\BannerSecaoController;
 use App\Http\Controllers\Admin\LogoController;
 use App\Http\Controllers\Admin\ContatoController;
+use App\Http\Controllers\Admin\AgendamentoController;
 use App\Http\Controllers\Admin\HorariosController;
+use App\Http\Controllers\Admin\AvaliacaoController;
 
 // Alteração da Gabriele - controller dos relatórios
 use App\Http\Controllers\Admin\RelatorioVaniaController;
@@ -24,7 +25,6 @@ use App\Http\Controllers\Admin\RelatorioVaniaController;
 use App\Http\Controllers\Auth\LoginController;
 
 
-<<<<<<< Updated upstream
 /*
 |--------------------------------------------------------------------------
 | ROTAS PÚBLICAS DO SITE
@@ -33,46 +33,6 @@ use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', [HomeController::class, 'home'])
     ->name('home');
-=======
-    //BANNER SEÇÃO
-    Route::get('/banners-secao', [BannerSecaoController::class, 'index'])->name('bannerSecao.index');
-
-    Route::post('/banners-secao', [BannerSecaoController::class, 'store'])->name('bannerSecao.store');
-
-    Route::put('/banners-secao', [BannerSecaoController::class, 'update'])->name('bannerSecao.update');
-
-    Route::patch('/banners-secao/{id}', [BannerSecaoController::class, 'status'])
-    ->name('bannerSecao.status');
-
-    // HORARIO
-    
-    Route::get('/horario', [HorariosController::class, 'index'])->name('horarios.index');
-
-    Route::post('/horario', [HorariosController::class, 'store'])->name('horarios.store');
-
-    Route::put('/horario/{id}', [HorariosController::class, 'update'])->name('horarios.update');
-
-    Route::patch('/horario/{id}', [HorariosController::class, 'status'])
-    ->name('horarios.status');
-
-    // AVALIACAO
-    Route::get('/avaliacao', [AvaliacaoController::class, 'avaliacao'])->name('avaliacao.index');
-    Route::post('/avaliacao', [AvaliacaoController::class, 'store'])->name('avaliacao.store');
-    Route::put('/avaliacao/{id}', [AvaliacaoController::class, 'update'])->name('avaliacao.update');
-    Route::patch('/avaliacao{id}', [AvaliacaoController::class, 'status'])->name('avaliacao.status');
-
-    // AGENDAMENTO
-
-    Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
-    Route::get('/diferenciais', [DiferencialController::class, 'index'])->name('diferencial.index');
-    Route::get('/sobre', [AdminSobreController::class, 'index'])->name('sobre.index');
-
-    
-    Route::get('/servicos', [AdminServicoController::class, 'index'])->name('servico.index');
-    // Alteração da Gabriele - cadastrar novo serviço
-    Route::post('/servicos', [AdminServicoController::class, 'store'])
-    ->name('servico.store');
->>>>>>> Stashed changes
 
 Route::get('/sobre', [SobreController::class, 'sobre'])
     ->name('sobre');
@@ -80,7 +40,6 @@ Route::get('/sobre', [SobreController::class, 'sobre'])
 Route::get('/servico', [ServicoController::class, 'servico'])
     ->name('servico');
 
-<<<<<<< Updated upstream
 Route::get('/servico/{id_servico_ancora}', [ServicoController::class, 'servico'])
     ->name('servico.categoria');
 
@@ -105,11 +64,6 @@ Route::middleware('guest')->group(function () {
     // faz o login
     Route::post('/login', [LoginController::class, 'login'])
         ->name('login.auth');
-=======
-    Route::get('/logos', [LogoController::class, 'index'])->name('logo.index');
-    Route::get('/contato', [ContatoController::class, 'index'])->name('contato.index');
-
->>>>>>> Stashed changes
 });
 
 
@@ -159,6 +113,30 @@ Route::middleware('auth')->group(function () {
 
             /*
             |--------------------------------------------------------------------------
+            | AGENDAMENTO
+            |--------------------------------------------------------------------------
+            */
+
+
+            Route::get('/agendamento', [AgendamentoController::class, 'agendamento'])
+                ->name('agendamento.index');
+
+            
+            Route::post('/agendamento', [AgendamentoController::class, 'store'])
+                ->name('agendamento.store');
+
+
+            
+            Route::put('/agendamento/{id}', [AgendamentoController::class, 'update'])
+                ->name('agendamento.update');
+
+
+            
+            Route::patch('/agendamento/{id}', [AgendamentoController::class, 'status'])
+                ->name('agendamento.status');
+
+            /*
+            |--------------------------------------------------------------------------
             | BANNER
             |--------------------------------------------------------------------------
             */
@@ -183,13 +161,6 @@ Route::middleware('auth')->group(function () {
 
 
             /*
-            |--------------------------------------------------------------------------
-            | DEPOIMENTOS
-            |--------------------------------------------------------------------------
-            */
-
-            Route::get('/depoimentos', [AvaliacaoController::class, 'index'])
-                ->name('avaliacao.index');
 
 
             /*
@@ -252,12 +223,26 @@ Route::middleware('auth')->group(function () {
 
             /*
             |--------------------------------------------------------------------------
-            | BANNERS DE SEÇÃO
+            | AVALIAÇÃO
             |--------------------------------------------------------------------------
             */
 
-            Route::get('/banners-secao', [BannerSecaoController::class, 'index'])
-                ->name('banner-secao.index');
+            Route::get('/avaliacao', [AvaliacaoController::class, 'avaliacao'])->name('avaliacao.index');
+            Route::post('/avaliacao', [AvaliacaoController::class, 'store'])->name('avaliacao.store');
+            Route::put('/avaliacao/{id}', [AvaliacaoController::class, 'update'])->name('avaliacao.update');
+            Route::patch('/avaliacao/{id}', [AvaliacaoController::class, 'status'])->name('avaliacao.status');
+
+            /*
+            |--------------------------------------------------------------------------
+            | BANNER-SEÇÃO
+            |--------------------------------------------------------------------------
+            */
+
+            Route::get('/banner-secao', [BannerSecaoController::class, 'index'])->name('bannerSecao.index');
+            Route::post('/banner-secao', [BannerSecaoController::class, 'store'])->name('bannerSecao.store');
+            Route::put('/banner-secao/{id}', [BannerSecaoController::class, 'update'])->name('bannerSecao.update');
+            Route::patch('/banner-secao/{id}', [BannerSecaoController::class, 'status'])->name('bannerSecao.status');;
+
 
 
             /*
@@ -304,9 +289,10 @@ Route::middleware('auth')->group(function () {
             | HORÁRIOS
             |--------------------------------------------------------------------------
             */
-
-            Route::get('/horarios', [HorariosController::class, 'index'])
-                ->name('horarios.index');
+            Route::get('/horarios', [HorariosController::class, 'index'])->name('horarios.index');
+            Route::post('/horarios', [HorariosController::class, 'store'])->name('horarios.store');
+            Route::put('/horarios/{id}', [HorariosController::class, 'update'])->name('horarios.update');
+            Route::patch('/horarios/{id}', [HorariosController::class, 'status'])->name('horarios.status');;
 
 
             /*
@@ -335,6 +321,5 @@ Route::middleware('auth')->group(function () {
             // muda o status do relatório
             Route::patch('/relatorios/{id}', [RelatorioVaniaController::class, 'status'])
                 ->name('relatorio.status');
-
         });
 });
