@@ -19,6 +19,10 @@
         {{-- Página inicial do painel. --}}
         <a class="nav-link text-white {{ request()->routeIs('admin.dashboard') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.dashboard') }}">Dashboard</a>
 
+        {{-- Gerenciamento de Clientes & Afins --}}
+        <small class="text-white-50 mt-3 px-2">GERENCIAR</small>
+        <a class="nav-link text-white {{ request()->routeIs('admin.cliente.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.cliente.index') }}">Clientes</a>
+
         {{-- Páginas que administram o conteúdo exibido no site público. --}}
         <small class="text-white-50 mt-3 px-2">CONTEÚDO DO SITE</small>
         <a class="nav-link text-white {{ request()->routeIs('admin.banner.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.banner.index') }}">Banners</a>

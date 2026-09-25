@@ -386,9 +386,9 @@ html::-webkit-scrollbar-thumb:hover { background: var(--vs-verde-escuro); }
 }
 
 
-.user-menu .dropdown-toggle:hover {
+/* .user-menu .dropdown-toggle:hover {
     color: #62733d;
-}
+} */
 
 
 .user-menu .dropdown-toggle::after {
@@ -536,3 +536,12 @@ html::-webkit-scrollbar-thumb:hover { background: var(--vs-verde-escuro); }
 /* Reduz movimentos quando essa preferência está ativa no dispositivo. */
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
 
+
+
+
+/* ANDRÉ: ESTILO DE INPUT BLOQUEADO - INACESSÍVEL AO USUÁRIO */
+select:disabled {
+    background: #ccc;
+    opacity: .6;
+    cursor: not-allowed;
+}

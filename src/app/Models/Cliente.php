@@ -21,7 +21,15 @@ class Cliente extends Model{
         'status_cliente',    
     ];
 
-    public function ClienteAvalicao(){
+    public function ClienteLogin(){
+        return $this->belongsTo(LoginUsuario::class, 'id_login', 'id_login_usuario');
+    }
+
+    public function ClienteVania(){
+        return $this->belongsTo(LoginVania::class, 'id_login_vania', 'id_login_vania');
+    }
+
+    public function ClienteAvaliacao(){
         return $this->hasMany(Avaliacao::class, 'id_cliente', 'id_cliente');
     }
 
