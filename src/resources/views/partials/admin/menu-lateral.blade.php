@@ -45,8 +45,8 @@
         {{-- Alteração da Gabriele - opções de gestão --}}
 
         <a
-            class="nav-link text-white"
-            href="#"
+            class="nav-link text-white {{ request()->routeIs('admin.cliente.*') ? 'bg-secondary rounded' : '' }}"
+            href="{{ route('admin.cliente.index') }}"
         >
             Clientes
         </a>

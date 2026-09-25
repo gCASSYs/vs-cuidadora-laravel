@@ -229,13 +229,15 @@
                             Conteúdo
                         </label>
 
-                        <input
-                            type="text"
+                        <textarea 
                             class="form-control"
                             id="texto_diferencial"
                             name="texto_diferencial"
+                            rows="4"
                             placeholder="Nosso método de trabalho se baseia em..."
-                            required>
+                            required
+                        >
+                        </textarea>
                     </div>
 
                     <div class="mb-3">
@@ -364,6 +366,7 @@
                             class="form-control"
                             id="editarDiferencialTexto"
                             name="texto_diferencial"
+                            rows="4"
                             required>
                     </div>
 

@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\BannerSecaoController;
 use App\Http\Controllers\Admin\LogoController;
 use App\Http\Controllers\Admin\ContatoController;
 use App\Http\Controllers\Admin\HorariosController;
+use App\Http\Controllers\Admin\ClienteController;
 
 // Alteração da Gabriele - controller dos relatórios
 use App\Http\Controllers\Admin\RelatorioVaniaController;
@@ -109,6 +110,28 @@ Route::middleware('auth')->group(function () {
             Route::get('/dashboard', [AdminController::class, 'dashboard'])
                 ->name('dashboard');
 
+
+            /*
+            |--------------------------------------------------------------------------
+            | CLIENTES
+            |--------------------------------------------------------------------------
+            */
+
+            
+            Route::get('/clientes', [ClienteController::class, 'index'])
+                ->name('cliente.index');
+
+            //Alteração de André - cadastrar cliente
+            Route::post('/clientes', [ClienteController::class,'store'])
+                ->name('cliente.store');
+
+            //Alteração de André - atualizar cliente
+            Route::put('/clientes/{id}', [ClienteController::class, 'update'])
+                ->name('cliente.update');
+
+            //Alteração de André - ativar ou desativar cliente
+            Route::patch('/clientes/{id}', [ClienteController::class, 'status'])
+                ->name('cliente.status');
 
             /*
             |--------------------------------------------------------------------------

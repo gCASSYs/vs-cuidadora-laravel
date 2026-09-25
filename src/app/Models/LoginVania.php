@@ -65,4 +65,12 @@ class LoginVania extends Authenticatable
     {
         return $this->senha_login_vania;
     }
+
+    public function VaniaUsuario() {
+        return $this->hasMany(LoginUsuario::class, 'id_login_vania', 'id_login_vania');
+    }
+
+    public function VaniaCliente() {
+        return $this->hasMany(Cliente::class, 'id_login_vania', 'id_login_vania');
+    }
 }
