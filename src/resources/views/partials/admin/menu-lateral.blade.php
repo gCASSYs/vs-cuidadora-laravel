@@ -206,6 +206,20 @@
             Conta
         </a>
 
+<<<<<<< Updated upstream
+=======
+        {{-- Páginas que administram o conteúdo exibido no site público. --}}
+        <small class="text-white-50 mt-3 px-2">CONTEÚDO DO SITE</small>
+        <a class="nav-link text-white {{ request()->routeIs('admin.banner.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.banner.index') }}">Banners</a>
+        <a class="nav-link text-white {{ request()->routeIs('admin.bannerSecao.index') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.bannerSecao.index') }}">Banners de seção</a>
+        <a class="nav-link text-white {{ request()->routeIs('admin.sobre.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.sobre.index') }}">Sobre</a>
+        <a class="nav-link text-white {{ request()->routeIs('admin.servico.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.servico.index') }}">Serviços</a>
+        <a class="nav-link text-white {{ request()->routeIs('admin.diferencial.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.diferencial.index') }}">Diferenciais</a>
+        <a class="nav-link text-white {{ request()->routeIs('admin.avaliacao.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.avaliacao.index') }}">Avaliações</a>
+        <a class="nav-link text-white {{ request()->routeIs('admin.faq.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.faq.index') }}">FAQ</a>
+        <a class="nav-link text-white {{ request()->routeIs('admin.contato.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.contato.index') }}">Contato</a>
+        <a class="nav-link text-white {{ request()->routeIs('admin.horarios.*') ? 'bg-secondary rounded' : '' }}" href="{{ route('admin.horarios.index') }}">Horários</a>
+>>>>>>> Stashed changes
 
     </nav>
 
