@@ -18,6 +18,10 @@ use App\Http\Controllers\Admin\LogoController;
 use App\Http\Controllers\Admin\ContatoController;
 use App\Http\Controllers\Admin\HorariosController;
 use App\Http\Controllers\Admin\ClienteController;
+
+// Alteração da Gabriele - controller dos relatórios
+use App\Http\Controllers\Admin\RelatorioVaniaController;
+
 use App\Http\Controllers\Auth\LoginController;
 
 
@@ -45,19 +49,19 @@ Route::get('/servico/{id_servico_ancora}', [ServicoController::class, 'servico']
 | LOGIN
 |--------------------------------------------------------------------------
 |
-| Alteração da Gabriele - estas rotas só podem ser acessadas
-| quando o usuário ainda não estiver autenticado.
+| Alteração da Gabriele - essas rotas só funcionam
+| enquanto o usuário ainda não estiver logado.
 |
 */
 
 Route::middleware('guest')->group(function () {
 
-    // Alteração da Gabriele - exibe a tela de login
+    // mostra a tela de login
     Route::get('/login', [LoginController::class, 'index'])
         ->name('login');
 
 
-    // Alteração da Gabriele - processa o login
+    // faz o login
     Route::post('/login', [LoginController::class, 'login'])
         ->name('login.auth');
 });
@@ -68,8 +72,7 @@ Route::middleware('guest')->group(function () {
 | ÁREA RESTRITA
 |--------------------------------------------------------------------------
 |
-| Alteração da Gabriele - todas as rotas dentro deste grupo
-| exigem que o usuário esteja autenticado.
+| Alteração da Gabriele - tudo aqui dentro precisa de login.
 |
 */
 
@@ -82,7 +85,7 @@ Route::middleware('auth')->group(function () {
     |--------------------------------------------------------------------------
     */
 
-    // Alteração da Gabriele - encerra a sessão do usuário
+    // encerra a sessão
     Route::post('/logout', [LoginController::class, 'logout'])
         ->name('logout');
 
@@ -140,17 +143,17 @@ Route::middleware('auth')->group(function () {
                 ->name('banner.index');
 
 
-            // Alteração da Gabriele - cadastrar novo banner
+            // cadastra um novo banner
             Route::post('/banner', [BannerController::class, 'store'])
                 ->name('banner.store');
 
 
-            // Alteração da Gabriele - atualizar banner
+            // atualiza um banner
             Route::put('/banner/{id}', [BannerController::class, 'update'])
                 ->name('banner.update');
 
 
-            // Alteração da Gabriele - ativar ou desativar banner
+            // muda o status do banner
             Route::patch('/banner/{id}', [BannerController::class, 'status'])
                 ->name('banner.status');
 
@@ -208,17 +211,17 @@ Route::middleware('auth')->group(function () {
                 ->name('servico.index');
 
 
-            // Alteração da Gabriele - cadastrar novo serviço
+            // cadastra um novo serviço
             Route::post('/servico', [AdminServicoController::class, 'store'])
                 ->name('servico.store');
 
 
-            // Alteração da Gabriele - atualizar serviço
+            // atualiza um serviço
             Route::put('/servico/{id}', [AdminServicoController::class, 'update'])
                 ->name('servico.update');
 
 
-            // Alteração da Gabriele - ativar ou desativar serviço
+            // muda o status do serviço
             Route::patch('/servico/{id}', [AdminServicoController::class, 'status'])
                 ->name('servico.status');
 
@@ -257,17 +260,17 @@ Route::middleware('auth')->group(function () {
                 ->name('contato.index');
 
 
-            // Alteração da Gabriele - cadastrar contato
+            // cadastra um novo contato
             Route::post('/contato', [ContatoController::class, 'store'])
                 ->name('contato.store');
 
 
-            // Alteração da Gabriele - atualizar contato
+            // atualiza um contato
             Route::put('/contato/{id}', [ContatoController::class, 'update'])
                 ->name('contato.update');
 
 
-            // Alteração da Gabriele - ativar ou desativar contato
+            // muda o status do contato
             Route::patch('/contato/{id}', [ContatoController::class, 'status'])
                 ->name('contato.status');
 
@@ -280,6 +283,34 @@ Route::middleware('auth')->group(function () {
 
             Route::get('/horarios', [HorariosController::class, 'index'])
                 ->name('horarios.index');
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | RELATÓRIOS
+            |--------------------------------------------------------------------------
+            |
+            */
+
+
+            // mostra a listagem dos relatórios
+            Route::get('/relatorios', [RelatorioVaniaController::class, 'index'])
+                ->name('relatorio.index');
+
+
+            // salva um novo relatório vindo do modal
+            Route::post('/relatorios', [RelatorioVaniaController::class, 'store'])
+                ->name('relatorio.store');
+
+
+            // atualiza um relatório que já existe
+            Route::put('/relatorios/{id}', [RelatorioVaniaController::class, 'update'])
+                ->name('relatorio.update');
+
+
+            // muda o status do relatório
+            Route::patch('/relatorios/{id}', [RelatorioVaniaController::class, 'status'])
+                ->name('relatorio.status');
 
         });
 });
