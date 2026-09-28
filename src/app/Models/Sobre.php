@@ -14,17 +14,15 @@ Class Sobre extends Model {
     protected $fillable = [
         'titulo_sobre',
         'subtitulo_sobre',
-        'texto_sobre',
-        'img_sobre',
-        'id_diferencial',
+        'paragrafo1_sobre',
+        'paragrafo2_sobre',
+        'paragrafo3_sobre',
+        'img1_sobre',
+        'titulo_secundario_sobre',
+        'paragrafo1_secundario_sobre',
+        'paragrafo2_secundario_sobre',
+        'paragrafo3_secundario_sobre',
+        'img2_sobre'
     ];
-
-    /**
-     * Diferencial associado ao conteúdo principal da página Sobre.
-     */
-    public function diferencial()
-    {
-        return $this->belongsTo(Diferencial::class, 'id_diferencial', 'id_diferencial');
-    }
 
 }

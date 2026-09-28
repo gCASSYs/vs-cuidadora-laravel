@@ -36,6 +36,8 @@ Class ClienteController extends Controller {
         ]);
 
         // Validação dos dados
+        // digits:11 - Obriga o número E o CPF a ter 11 dígitos ( sem contar '()', '-' e '.' )
+        // integer   - Força o conteúdo inserido a ser um número inteiro
         $dados = $request->validate([
             'nome_cliente' => 'required|string|max:75',
             'telefone_cliente' => 'required|digits:11',
@@ -45,14 +47,14 @@ Class ClienteController extends Controller {
             'status_cliente' => 'required|in:ATIVO,INATIVO',
         ]);
 
-        // Formatando CPF
+        // Formatando CPF para = XXX.XXX.XXX-XX
         $dados['cpf_cliente'] = preg_replace(
             '/(\d{3})(\d{3})(\d{3})(\d{2})/',
             '$1.$2.$3-$4',
             $dados['cpf_cliente']
         );
-
-        // Formatando Telefone
+ 
+        // Formatando Telefone para = (XX)XXXXX-XXXX
         $dados['telefone_cliente'] = preg_replace(
             '/(\d{2})(\d{5})(\d{4})/',
             '($1)$2-$3',
