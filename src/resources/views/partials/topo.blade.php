@@ -3,7 +3,7 @@
     <div class="padrao">
         <!-- Alteração da Gabriele: adaptação do nome do projeto para Vânia Silva sem alterar a classe ou estrutura do topo -->
         <h1 class="marca">
-            <a href="index.php" aria-label="Ir para a página inicial">
+            <a href="{{ route('home') }}" aria-label="Ir para a página inicial">
                 <img src="{{ asset ('vs-cuidadora/assets/Logo Vânia Silva.png') }}" alt="Vânia Silva - Cuidadora de Idosos">
             </a>
         </h1>

@@ -196,7 +196,6 @@ class RelatorioVaniaController extends Controller
 
             /*
              * Todo relatório novo começa como rascunho.
-             * Depois a Vânia pode finalizar.
              */
             'status_relatorio_vania' => 'RASCUNHO',
 
@@ -220,7 +219,6 @@ class RelatorioVaniaController extends Controller
     |--------------------------------------------------------------------------
     |
     | Alteração da Gabriele - atualiza um relatório que já existe.
-
     |
     */
 
@@ -351,15 +349,18 @@ class RelatorioVaniaController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | MUDAR STATUS
+    | FINALIZAR RELATÓRIO
     |--------------------------------------------------------------------------
     |
-    | Alteração da Gabriele - por enquanto faz só:
+    | Alteração da Gabriele - agora o fluxo é:
     |
-    | RASCUNHO <-> SALVO
+    | RASCUNHO -> SALVO
     |
-    | O ENVIADO vai ser usado mais pra frente quando fizermos
-    | a parte do cliente.
+    | Depois que estiver SALVO ele não volta automaticamente
+    | para RASCUNHO.
+    |
+    | O ENVIADO vai ser usado mais pra frente quando
+    | fizermos a área do cliente.
     |
     */
 
@@ -370,30 +371,34 @@ class RelatorioVaniaController extends Controller
 
 
         /*
-         * Se está como rascunho, finaliza.
-         * Se está finalizado, volta pra rascunho.
+         * Alteração da Gabriele - só permite finalizar
+         * relatório que ainda está como rascunho.
          */
         if ($relatorio->status_relatorio_vania === 'RASCUNHO') {
 
             $relatorio->status_relatorio_vania = 'SALVO';
 
-            $mensagem = 'Relatório finalizado com sucesso!';
+            $relatorio->save();
 
-        } else {
 
-            $relatorio->status_relatorio_vania = 'RASCUNHO';
-
-            $mensagem = 'Relatório voltou para rascunho!';
+            return redirect()
+                ->route('admin.relatorio.index')
+                ->with(
+                    'sucesso',
+                    'Relatório finalizado com sucesso!'
+                );
         }
 
 
-        // salva a mudança
-        $relatorio->save();
-
-
-        // volta pra listagem
+        /*
+         * Alteração da Gabriele - se já estiver SALVO
+         * ou futuramente ENVIADO, não altera o status.
+         */
         return redirect()
             ->route('admin.relatorio.index')
-            ->with('sucesso', $mensagem);
+            ->with(
+                'erro',
+                'Esse relatório já foi finalizado.'
+            );
     }
 }

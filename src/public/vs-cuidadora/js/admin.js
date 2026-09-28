@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Alteração da Gabriele - fecha os avisos temporários depois de cinco segundos.
+  document.querySelectorAll('[data-auto-dismiss]').forEach((message) => {
+    const listHeader = document.querySelector('.admin-list-page .app-content-header');
+    const alert = message.querySelector('.alert');
+
+    // Alteração da Gabriele - posiciona os avisos logo abaixo do título nas listagens.
+    if (listHeader) {
+      listHeader.insertAdjacentElement('afterend', message);
+    }
+
+    window.setTimeout(() => {
+      alert.classList.remove('show');
+      window.setTimeout(() => message.remove(), 200);
+    }, 5000);
+  });
+
   // Elementos usados pelos controles globais do painel.
   const shell = document.querySelector('.vs-admin-shell');
   const sidebarButton = document.querySelector('[data-admin-toggle="sidebar"]');

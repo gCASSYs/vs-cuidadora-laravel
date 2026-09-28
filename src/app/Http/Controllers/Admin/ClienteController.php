@@ -109,7 +109,7 @@ Class ClienteController extends Controller {
                 return $novoStatus;
             });
 
-            $mensagem = $novoStatus === 'ATIVO' ? 'Cliente ATIVADO com sucesso!' : 'Cliente DESATIVADO com sucesso!';
+            $mensagem = $novoStatus === 'ATIVO' ? 'Cliente ativado com sucesso!' : 'Cliente desativado com sucesso!';
 
             return redirect()
                 ->route('admin.cliente.index')

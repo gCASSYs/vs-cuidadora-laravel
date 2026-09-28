@@ -45,25 +45,32 @@
         {{-- Alteração da Gabriele - opções de gestão --}}
 
         <a
-            class="nav-link text-white {{ request()->routeIs('admin.cliente.*') ? 'bg-secondary rounded' : '' }}"
+            class="nav-link text-white
+            {{ request()->routeIs('admin.cliente.*') ? 'bg-secondary rounded' : '' }}"
             href="{{ route('admin.cliente.index') }}"
         >
             Clientes
         </a>
 
+
+        {{-- Alteração da Gabriele - acesso para a listagem dos idosos --}}
         <a
-            class="nav-link text-white"
-            href="#"
+            class="nav-link text-white
+            {{ request()->routeIs('admin.idoso.*') ? 'bg-secondary rounded' : '' }}"
+            href="{{ route('admin.idoso.index') }}"
         >
             Idosos
         </a>
 
+
+        {{-- Agendamento ainda não está pronto --}}
         <a
             class="nav-link text-white"
             href="#"
         >
             Agendamentos
         </a>
+
 
         <a
             class="nav-link text-white
@@ -83,7 +90,6 @@
         </small>
 
 
-
         {{-- Banners --}}
         <a
             class="nav-link text-white
@@ -92,7 +98,6 @@
         >
             Banners
         </a>
-
 
 
         {{-- Banners de seção --}}
@@ -105,7 +110,6 @@
         </a>
 
 
-
         {{-- Sobre --}}
         <a
             class="nav-link text-white
@@ -114,7 +118,6 @@
         >
             Sobre
         </a>
-
 
 
         {{-- Serviços --}}
@@ -127,7 +130,6 @@
         </a>
 
 
-
         {{-- Diferenciais --}}
         <a
             class="nav-link text-white
@@ -136,7 +138,6 @@
         >
             Diferenciais
         </a>
-
 
 
         {{-- Depoimentos --}}
@@ -149,16 +150,14 @@
         </a>
 
 
-
         {{-- FAQ --}}
         <a
             class="nav-link text-white
             {{ request()->routeIs('admin.faq.*') ? 'bg-secondary rounded' : '' }}"
             href="{{ route('admin.faq.index') }}"
         >
-            FAQ
+            Faq
         </a>
-
 
 
         {{-- Contato --}}
@@ -171,7 +170,6 @@
         </a>
 
 
-
         {{-- Horários --}}
         <a
             class="nav-link text-white
@@ -181,6 +179,7 @@
             Horários
         </a>
 
+
         {{-- Logo --}}
         <a
             class="nav-link text-white
@@ -189,6 +188,7 @@
         >
             Logo
         </a>
+
 
         {{-- ============================================================ --}}
         {{-- CONFIGURAÇÕES --}}
@@ -205,7 +205,6 @@
         >
             Conta
         </a>
-
 
     </nav>
 

@@ -8,7 +8,18 @@
 
                 @foreach ($listaTopico as $lista)
 
-                    <article id="servico">
+                    {{-- Alteração da Gabriele - usa o fundo cadastrado somente quando o arquivo existe. --}}
+                    @php
+                        $fundoServico = filled($lista->fundo_servico)
+                            && file_exists(public_path('vs-cuidadora/assets/' . $lista->fundo_servico))
+                            ? asset('vs-cuidadora/assets/' . $lista->fundo_servico)
+                            : null;
+                    @endphp
+
+                    <article
+                        class="servico-card-home"
+                        @if ($fundoServico) style="background-image: url('{{ $fundoServico }}')" @endif
+                    >
                         <div>
                             <img src="{{ asset("vs-cuidadora/assets/$lista->icone_servico") }}" alt="{{$lista->titulo_servico}}">
                             <h5>{{$lista->titulo_servico}}</h5>

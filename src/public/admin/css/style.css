@@ -62,6 +62,9 @@ html::-webkit-scrollbar-thumb:hover { background: var(--vs-verde-escuro); }
 .vs-admin-main .form-control, .vs-admin-main .form-select, .vs-admin-main .input-group-text { color: var(--vs-texto); border-color: var(--vs-borda); background: var(--vs-superficie); }
 .vs-admin-main .form-control:focus, .vs-admin-main .form-select:focus { border-color: var(--vs-verde); box-shadow: 0 0 0 .22rem rgba(98,115,61,.18); }
 
+/* Alteração da Gabriele - mantém os campos longos e o corpo do modal de Idosos roláveis. */
+.modal-body-idoso-scrollavel { max-height: calc(100dvh - 210px); overflow-y: auto; }
+
 /* Botões principais, secundários e ações de exclusão. */
 .vs-admin-main .btn-primary { --bs-btn-bg: var(--vs-verde); --bs-btn-border-color: var(--vs-verde); --bs-btn-hover-bg: var(--vs-verde-escuro); --bs-btn-hover-border-color: var(--vs-verde-escuro); --bs-btn-active-bg: var(--vs-verde-escuro); --bs-btn-active-border-color: var(--vs-verde-escuro); }
 .vs-admin-main .btn-outline-secondary { --bs-btn-color: var(--vs-verde-escuro); --bs-btn-border-color: var(--vs-borda); --bs-btn-hover-bg: var(--vs-verde); --bs-btn-hover-border-color: var(--vs-verde); }

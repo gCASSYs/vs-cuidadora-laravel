@@ -1,6 +1,3 @@
-<?php
-
-?>
 <section class="padrao servico-detalhe">
     <div class="servico-hero">
         @php
@@ -22,37 +19,44 @@
     </div>
 
     <div class="servico-conteudo">
-        <article class="servico-card servico-card-texto">
-            <div class="servico-titulo-linha">
-                <img src="{{ asset("vs-cuidadora/assets/$listo->icone_servico_funcionamento") }}" alt="{{ $listo->titulo_servico_funcionamento }}">
-                <h2>{{ $listo->titulo_servico_funcionamento }}</h2>
-            </div>
-            <p>{{ $listo->paragrafo_servico_funcionamento }}</p>
-        </article>
+        {{-- Alteração da Gabriele - não renderiza cards sem relacionamento cadastrado. --}}
+        @if ($listo)
+            <article class="servico-card servico-card-texto">
+                <div class="servico-titulo-linha">
+                    <img src="{{ asset("vs-cuidadora/assets/$listo->icone_servico_funcionamento") }}" alt="{{ $listo->titulo_servico_funcionamento }}">
+                    <h2>{{ $listo->titulo_servico_funcionamento }}</h2>
+                </div>
+                <p>{{ $listo->paragrafo_servico_funcionamento }}</p>
+            </article>
+        @endif
 
-        <article class="servico-card servico-card-lista">
-            <h2>{{ $listar->titulo_servico_incluir }}</h2>
-            <ul>
-                <li>{{ $listar->paragrafo1_servico_incluir }}</li>
-                <li>{{ $listar->paragrafo2_servico_incluir }}</li>
-                <li>{{ $listar->paragrafo3_servico_incluir }}</li>
-            </ul>
-        </article>
+        @if ($listar)
+            <article class="servico-card servico-card-lista">
+                <h2>{{ $listar->titulo_servico_incluir }}</h2>
+                <ul>
+                    <li>{{ $listar->paragrafo1_servico_incluir }}</li>
+                    <li>{{ $listar->paragrafo2_servico_incluir }}</li>
+                    <li>{{ $listar->paragrafo3_servico_incluir }}</li>
+                </ul>
+            </article>
+        @endif
     </div>
 
     <div class="servico-apoio">
-        <article class="servico-card servico-card-lista">
-            <h2>{{ $linha->titulo_servico_cuidado }}</h2>
-            <ul>
-                <li>{{ $linha->paragrafo1_servico_cuidado }}</li>
-                <li>{{ $linha->paragrafo2_servico_cuidado }}</li>
-                <li>{{ $linha->paragrafo3_servico_cuidado }}</li>
-            </ul>
-        </article>
+        @if ($linha)
+            <article class="servico-card servico-card-lista">
+                <h2>{{ $linha->titulo_servico_cuidado }}</h2>
+                <ul>
+                    <li>{{ $linha->paragrafo1_servico_cuidado }}</li>
+                    <li>{{ $linha->paragrafo2_servico_cuidado }}</li>
+                    <li>{{ $linha->paragrafo3_servico_cuidado }}</li>
+                </ul>
+            </article>
+        @endif
 
         <article class="servico-card servico-card-cta">
             <h2>Quer conversar sobre este serviço?</h2>
-            <p></p>
+            <p>Entre em contato para conversar sobre a rotina, as necessidades do idoso e a disponibilidade de atendimento.</p>
             <a href="{{ route('home') }}#form-contat">Entre em contato</a>
         </article>
     </div>

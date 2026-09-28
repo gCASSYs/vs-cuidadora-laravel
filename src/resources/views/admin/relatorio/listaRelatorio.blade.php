@@ -333,15 +333,12 @@
 
 
                                                 {{-- ações --}}
+
                                                 <td class="text-end">
 
                                                     <div class="btn-group btn-group-sm">
 
-
-                                                        {{--
-                                                            Alteração da Gabriele -
-                                                            agora o lápis abre o modal de editar
-                                                        --}}
+                                                        {{-- Alteração da Gabriele - editar relatório --}}
                                                         <button
                                                             type="button"
                                                             class="btn btn-outline-secondary btn-editar-relatorio"
@@ -363,24 +360,76 @@
                                                         </button>
 
 
-
                                                         {{--
                                                             Alteração da Gabriele -
-                                                            esse botão vai enviar pro cliente.
-
-                                                            Ainda não fazemos isso pq essa
-                                                            parte depende da área do cliente.
+                                                            enquanto estiver RASCUNHO, o check finaliza.
                                                         --}}
-                                                        <button
-                                                            type="button"
-                                                            class="btn btn-outline-success"
-                                                            title="Enviar relatório"
-                                                            disabled
-                                                        >
+                                                        @if ($relatorio->status_relatorio_vania === 'RASCUNHO')
 
-                                                            <i class="bi bi-check-lg"></i>
+                                                            <form
+                                                                action="{{ route(
+                                                                    'admin.relatorio.status',
+                                                                    $relatorio->id_relatorio_vania
+                                                                ) }}"
+                                                                method="POST"
+                                                                class="d-inline"
+                                                            >
 
-                                                        </button>
+                                                                @csrf
+                                                                @method('PATCH')
+
+                                                                <button
+                                                                    type="submit"
+                                                                    class="btn btn-outline-success"
+                                                                    title="Finalizar relatório"
+                                                                    aria-label="Finalizar relatório"
+                                                                >
+
+                                                                    <i class="bi bi-check-lg"></i>
+
+                                                                </button>
+
+                                                            </form>
+
+
+                                                        @elseif ($relatorio->status_relatorio_vania === 'SALVO')
+
+                                                            {{--
+                                                                Alteração da Gabriele -
+                                                                já foi finalizado, então não deixa clicar novamente.
+                                                            --}}
+                                                            <button
+                                                                type="button"
+                                                                class="btn btn-outline-success"
+                                                                title="Relatório finalizado"
+                                                                aria-label="Relatório finalizado"
+                                                                disabled
+                                                            >
+
+                                                                <i class="bi bi-check-circle-fill"></i>
+
+                                                            </button>
+
+
+                                                        @elseif ($relatorio->status_relatorio_vania === 'ENVIADO')
+
+                                                            {{--
+                                                                Alteração da Gabriele -
+                                                                deixamos preparado para quando existir envio ao cliente.
+                                                            --}}
+                                                            <button
+                                                                type="button"
+                                                                class="btn btn-outline-primary"
+                                                                title="Relatório enviado"
+                                                                aria-label="Relatório enviado"
+                                                                disabled
+                                                            >
+
+                                                                <i class="bi bi-send-check-fill"></i>
+
+                                                            </button>
+
+                                                        @endif
 
                                                     </div>
 
@@ -590,7 +639,7 @@
 
 
 
-                {{-- idoso --}}
+                {{-- idoso --}}            
                 <div class="mb-3">
 
                     <label
@@ -606,10 +655,11 @@
                         name="id_idoso"
                         class="form-select"
                         required
+                        disabled
                     >
 
                         <option value="">
-                            Selecione o idoso
+                            Primeiro selecione o cliente
                         </option>
 
 
@@ -617,6 +667,7 @@
 
                             <option
                                 value="{{ $idoso->id_idoso }}"
+                                data-cliente="{{ $idoso->id_cliente }}"
                                 @selected(
                                     old('id_idoso') == $idoso->id_idoso
                                 )
@@ -1390,16 +1441,20 @@
                         name="id_idoso"
                         class="form-select"
                         required
+                        disabled
                     >
 
                         <option value="">
-                            Selecione o idoso
+                            Primeiro selecione o cliente
                         </option>
 
 
                         @foreach ($idosos as $idoso)
 
-                            <option value="{{ $idoso->id_idoso }}">
+                            <option
+                                value="{{ $idoso->id_idoso }}"
+                                data-cliente="{{ $idoso->id_cliente }}"
+                            >
 
                                 {{ $idoso->nome_idoso }}
 
@@ -2134,9 +2189,15 @@
                     );
 
 
-                    // idoso
-                    colocarValor(
-                        'edit_id_idoso',
+                    /*
+                    * Alteração da Gabriele -
+                    * depois de selecionar o cliente,
+                    * monta a lista somente com os idosos dele
+                    * e seleciona o idoso do relatório.
+                    */
+                    filtrarIdososPorCliente(
+                        editClienteRelatorio,
+                        editIdosoRelatorio,
                         relatorio.id_idoso
                     );
 
@@ -2441,5 +2502,242 @@
 
         }
     );
+
+
+    /*
+ * Alteração da Gabriele -
+ * filtra os idosos de acordo com o cliente escolhido.
+ */
+function filtrarIdososPorCliente(
+    selectCliente,
+    selectIdoso,
+    idosoSelecionado = ''
+) {
+
+    const idCliente =
+        selectCliente.value;
+
+
+    /*
+     * Alteração da Gabriele -
+     * se nenhum cliente estiver selecionado,
+     * o campo de idoso fica bloqueado.
+     */
+    if (!idCliente) {
+
+        selectIdoso.disabled = true;
+
+        selectIdoso.innerHTML =
+            '<option value="">Primeiro selecione o cliente</option>';
+
+        return;
+    }
+
+
+    /*
+     * Pega todos os idosos que vieram do Laravel.
+     */
+    const idosos = @json($idosos);
+
+
+    /*
+     * Filtra somente os idosos que pertencem
+     * ao cliente selecionado.
+     */
+    const idososDoCliente =
+        idosos.filter(function (idoso) {
+
+            return String(idoso.id_cliente)
+                === String(idCliente);
+
+        });
+
+
+    /*
+     * Limpa o select antes de montar a nova lista.
+     */
+    selectIdoso.innerHTML = '';
+
+
+    /*
+     * Se o cliente não tiver nenhum idoso cadastrado,
+     * mostramos uma mensagem dentro do próprio select.
+     */
+    if (idososDoCliente.length === 0) {
+
+        selectIdoso.disabled = true;
+
+
+        const option =
+            document.createElement('option');
+
+
+        option.value = '';
+
+        option.textContent =
+            'Nenhum idoso cadastrado para este cliente';
+
+
+        selectIdoso.appendChild(option);
+
+        return;
+    }
+
+
+    /*
+     * Se encontrou idosos, libera o campo.
+     */
+    selectIdoso.disabled = false;
+
+
+    /*
+     * Primeira opção padrão.
+     */
+    const optionInicial =
+        document.createElement('option');
+
+
+    optionInicial.value = '';
+
+    optionInicial.textContent =
+        'Selecione o idoso';
+
+
+    selectIdoso.appendChild(optionInicial);
+
+
+
+    /*
+     * Adiciona somente os idosos
+     * daquele cliente.
+     */
+    idososDoCliente.forEach(function (idoso) {
+
+        const option =
+            document.createElement('option');
+
+
+        option.value =
+            idoso.id_idoso;
+
+
+        option.textContent =
+            idoso.nome_idoso;
+
+
+        /*
+         * Alteração da Gabriele -
+         * usado principalmente no modal de edição.
+         */
+        if (
+            idosoSelecionado
+            && String(idoso.id_idoso)
+                === String(idosoSelecionado)
+        ) {
+
+            option.selected = true;
+
+        }
+
+
+        selectIdoso.appendChild(option);
+
+    });
+
+}
+
+
+
+/*
+ * ============================================================
+ * NOVO RELATÓRIO
+ * ============================================================
+ */
+
+const novoCliente =
+    document.getElementById('id_cliente');
+
+const novoIdoso =
+    document.getElementById('id_idoso');
+
+
+if (novoCliente && novoIdoso) {
+
+    /*
+     * Alteração da Gabriele -
+     * muda a lista de idosos quando muda o cliente.
+     */
+    novoCliente.addEventListener(
+        'change',
+        function () {
+
+            filtrarIdososPorCliente(
+                novoCliente,
+                novoIdoso
+            );
+
+        }
+    );
+
+
+    /*
+     * Alteração da Gabriele -
+     * se o formulário voltar com erro,
+     * restaura cliente e idoso escolhidos.
+     */
+    const idosoAntigo =
+        @json(old('id_idoso'));
+
+
+    if (novoCliente.value) {
+
+        filtrarIdososPorCliente(
+            novoCliente,
+            novoIdoso,
+            idosoAntigo
+        );
+
+    }
+
+}
+
+
+
+        /*
+        * ============================================================
+        * EDITAR RELATÓRIO
+        * ============================================================
+        */
+
+        const editClienteRelatorio =
+            document.getElementById('edit_id_cliente');
+
+        const editIdosoRelatorio =
+            document.getElementById('edit_id_idoso');
+
+
+        if (
+            editClienteRelatorio
+            && editIdosoRelatorio
+        ) {
+
+            /*
+            * Alteração da Gabriele -
+            * se a Vânia trocar o cliente no modal de edição,
+            * a lista de idosos tbm muda.
+            */
+            editClienteRelatorio.addEventListener(
+                'change',
+                function () {
+
+                    filtrarIdososPorCliente(
+                        editClienteRelatorio,
+                        editIdosoRelatorio
+                    );
+
+                }
+            );
+
+        }
 
 </script>

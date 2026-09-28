@@ -19,6 +19,9 @@ use App\Http\Controllers\Admin\ContatoController;
 use App\Http\Controllers\Admin\HorariosController;
 use App\Http\Controllers\Admin\ClienteController;
 
+// Alteração da Gabriele - controller dos idosos
+use App\Http\Controllers\Admin\IdosoController;
+
 // Alteração da Gabriele - controller dos relatórios
 use App\Http\Controllers\Admin\RelatorioVaniaController;
 
@@ -117,21 +120,49 @@ Route::middleware('auth')->group(function () {
             |--------------------------------------------------------------------------
             */
 
-            
             Route::get('/clientes', [ClienteController::class, 'index'])
                 ->name('cliente.index');
 
-            //Alteração de André - cadastrar cliente
-            Route::post('/clientes', [ClienteController::class,'store'])
+            // Alteração de André - cadastrar cliente
+            Route::post('/clientes', [ClienteController::class, 'store'])
                 ->name('cliente.store');
 
-            //Alteração de André - atualizar cliente
+            // Alteração de André - atualizar cliente
             Route::put('/clientes/{id}', [ClienteController::class, 'update'])
                 ->name('cliente.update');
 
-            //Alteração de André - ativar ou desativar cliente
+            // Alteração de André - ativar ou desativar cliente
             Route::patch('/clientes/{id}', [ClienteController::class, 'status'])
                 ->name('cliente.status');
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | IDOSOS
+            |--------------------------------------------------------------------------
+            |
+            | Alteração da Gabriele - no painel da Vânia o idoso
+            | pode ser listado, editado e ativado/desativado.
+            |
+            | O cadastro será feito pelo cliente futuramente,
+            | então não existe rota POST aqui.
+            |
+            */
+
+            // mostra todos os idosos cadastrados
+            Route::get('/idosos', [IdosoController::class, 'index'])
+                ->name('idoso.index');
+
+
+            // atualiza os dados de um idoso
+            Route::put('/idosos/{id}', [IdosoController::class, 'update'])
+                ->name('idoso.update');
+
+
+            // ativa ou desativa um idoso
+            Route::patch('/idosos/{id}', [IdosoController::class, 'status'])
+                ->name('idoso.status');
+
 
             /*
             |--------------------------------------------------------------------------
@@ -185,10 +216,17 @@ Route::middleware('auth')->group(function () {
             */
 
             // Alteração de André - CRUD DIFERENCIAL
-            Route::get('/diferenciais', [DiferencialController::class, 'index'])->name('diferencial.index');
-            Route::post('/diferenciais', [DiferencialController::class, 'store'])->name('diferencial.store');
-            Route::put('/diferenciais/{id}', [DiferencialController::class, 'update'])->name('diferencial.update');
-            Route::patch('/diferenciais/{id}', [DiferencialController::class, 'status'])->name('diferencial.status');
+            Route::get('/diferenciais', [DiferencialController::class, 'index'])
+                ->name('diferencial.index');
+
+            Route::post('/diferenciais', [DiferencialController::class, 'store'])
+                ->name('diferencial.store');
+
+            Route::put('/diferenciais/{id}', [DiferencialController::class, 'update'])
+                ->name('diferencial.update');
+
+            Route::patch('/diferenciais/{id}', [DiferencialController::class, 'status'])
+                ->name('diferencial.status');
 
 
             /*
@@ -245,9 +283,15 @@ Route::middleware('auth')->group(function () {
             // Alteração de André - CRUD LOGOS
             Route::get('/logos', [LogoController::class, 'index'])
                 ->name('logo.index');
-            Route::post('/logos', [LogoController::class, 'store'])->name('logo.store');
-            Route::put('/logos/{id}', [LogoController::class, 'update'])->name('logo.update');
-            Route::patch('/logos/{id}', [LogoController::class, 'status'])->name('logo.status');
+
+            Route::post('/logos', [LogoController::class, 'store'])
+                ->name('logo.store');
+
+            Route::put('/logos/{id}', [LogoController::class, 'update'])
+                ->name('logo.update');
+
+            Route::patch('/logos/{id}', [LogoController::class, 'status'])
+                ->name('logo.status');
 
 
             /*
@@ -289,9 +333,7 @@ Route::middleware('auth')->group(function () {
             |--------------------------------------------------------------------------
             | RELATÓRIOS
             |--------------------------------------------------------------------------
-            |
             */
-
 
             // mostra a listagem dos relatórios
             Route::get('/relatorios', [RelatorioVaniaController::class, 'index'])

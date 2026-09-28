@@ -100,29 +100,37 @@ html{
 
 .topo{
     background-color: var(--cor-verde-escuro);
+    position: relative;
+    z-index: 999;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
 }
 
-.topo div{
-    display: flex;
-    justify-content: space-around;
+/* Alteração da Gabriele: organiza logo, navegação, redes e botão sem espalhar os itens */
+.topo > .padrao{
+    min-height: 98px;
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
     align-items: center;
+    column-gap: 46px;
+    padding-top: 7px;
+    padding-bottom: 7px;
 }
 
 /* logo */
-.topo .marca {
+.topo .marca{
     margin: 0;
     flex-shrink: 0;
 }
 
-.topo .marca a {
+.topo .marca a{
     position: relative;
     display: block;
-    width: 240px;
-    height: 84px;
+    width: 220px;
+    height: 82px;
     overflow: hidden;
 }
 
-.topo .marca img {
+.topo .marca img{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -133,93 +141,239 @@ html{
     transform: translate(-50%, -50%);
 }
 
-/* menu */
-
-.menu{
-    display: flex;
+/* Alteração da Gabriele: divide o lado direito em menu, redes e contato */
+.topo .menu{
+    min-width: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
     align-items: center;
-    margin-right: 70px;
+    column-gap: 28px;
+    margin: 0;
 }
 
-.dropdown{
+/* menu principal */
+.topo .menu > ul:first-of-type{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    margin: 0;
+    padding: 0;
+}
+
+.topo .menu ul li{
+    position: relative;
+}
+
+.topo .menu ul li a{
+    margin: 0;
+    padding: 10px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 22px;
+    line-height: 1;
+    font-family: var(--fonte-titulo);
+    color: var(--cor-cinza-claro);
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.topo .menu ul li a:hover,
+.topo .menu ul li .botao-ativo{
+    color: var(--cor-verde-claro);
+}
+
+.topo .menu ul li a:hover{
+    transform: translateY(-2px);
+}
+
+/* dropdown de serviços */
+.topo .dropdown{
     display: inline-block;
     position: relative;
 }
 
-.dropdown > div{
-    display: flex;
+.topo .dropdown > a i{
+    font-size: 14px;
+    color: var(--cor-cinza-claro);
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
 }
 
-.dropdown i{
-    transition: all .3s ease-in-out;
-    /* display: flex; */
+.topo .dropdown:hover > a i{
+    transform: rotate(180deg);
+    color: var(--cor-verde-claro);
 }
 
-.dropdown:hover i{
-    transform: rotateX(0deg);
-}
-
-.dropdown .submenu{
+.topo .dropdown .submenu{
+    min-width: 285px;
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
     display: block;
+    padding: 12px;
     opacity: 0;
     visibility: hidden;
+    transform: translate(-50%, 10px);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(149, 177, 89, 0.28);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.26);
+    z-index: 1000;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s ease;
+}
+
+.topo .dropdown .submenu::before{
+    content: "";
     position: absolute;
-    top: 120%;
-    left: 0;
-    background: linear-gradient(to bottom, #62733d, #95b159);
-    box-shadow: 
-        inset 5px 0 20px #34401b,
-        0 8px 16px #000;
-    
-    z-index: 1;
-    transition: all .3s ease-in-out;
+    top: -8px;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.97);
+    border-left: 1px solid rgba(149, 177, 89, 0.28);
+    border-top: 1px solid rgba(149, 177, 89, 0.28);
+    transform: translateX(-50%) rotate(45deg);
 }
 
-.dropdown .submenu li{
-    display: block;
-}
-
-.dropdown .submenu li a{
-    font-size: 18px;
-    display: block;
-    text-align: center;
-    padding: 8px 0;
-}
-
-.dropdown:hover .submenu{
+.topo .dropdown:hover .submenu{
     opacity: 1;
     visibility: visible;
-    top: 100%;
+    transform: translate(-50%, 0);
 }
 
-.menu ul{
+.topo .dropdown .submenu li{
+    display: block;
+    width: 100%;
+}
+
+.topo .dropdown .submenu li a{
+    width: 100%;
+    min-height: 44px;
+    padding: 11px 14px;
+    margin: 0;
     display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 1.25;
+    font-family: var(--fonte-texto);
+    font-weight: 600;
+    color: var(--cor-verde-escuro);
+    text-align: left;
+    white-space: normal;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        padding-left 0.3s ease;
 }
 
-.menu ul li a{
-    font-size: 25px;
+.topo .dropdown .submenu li a:hover{
+    background-color: rgba(149, 177, 89, 0.16);
+    color: var(--cor-marrom-avermelhado);
+    transform: none;
+    padding-left: 18px;
+}
+
+/* Alteração da Gabriele: mantém as redes compactas entre menu e botão */
+.topo .menu > .redes-sociais{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.topo .menu > .redes-sociais li{
+    width: 34px;
+    height: 34px;
+    margin: 0;
+    background-color: rgba(149, 177, 89, 0.35);
+    border: 1px solid rgba(217, 217, 217, 0.16);
+    border-radius: 50%;
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.topo .menu > .redes-sociais li:hover{
+    transform: translateY(-3px);
+    background-color: var(--cor-verde-claro);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22);
+}
+
+.topo .menu .redes-sociais li a{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topo .menu .redes-sociais img{
+    width: 18px;
+    height: 18px;
+    display: block;
+    object-fit: contain;
+}
+
+/* botão de contato */
+.topo .contato{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.topo .contato a{
+    min-height: 44px;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1.5px solid rgba(217, 217, 217, 0.32);
+    background-color: var(--cor-marrom-avermelhado);
     color: var(--cor-cinza-claro);
+    font-size: 19px;
+    font-family: var(--fonte-texto);
+    font-weight: 700;
     text-decoration: none;
-    margin: 0 20px;
-    font-family: var(--fonte-titulo);
-
-    transition:  color .2s ease;
+    white-space: nowrap;
+    box-shadow: 0 12px 24px rgba(140, 73, 58, 0.22);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
 }
 
-.menu ul li a:hover{
-    color: var(--cor-verde-claro);
+.topo .contato a:hover{
+    transform: translateY(-3px);
+    background-color: #a45444;
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.26);
 }
 
-.menu ul li .botao-ativo{
-    color: var(--cor-verde-claro);
-}
-
+/* topo fixo */
 .menu-fixo{
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 10;
-    background-color: rgba(52, 64, 27, 0.95);
+    z-index: 999;
+    background-color: rgba(52, 64, 27, 0.96);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
     animation: menuFixoIn 0.4s ease both;
 }
 
@@ -242,7 +396,7 @@ html{
 @keyframes menuFixoOut{
     from{
         opacity: 1;
-        transform: translateY(0)
+        transform: translateY(0);
     }
 
     to{
@@ -251,69 +405,69 @@ html{
     }
 }
 
-.redes-sociais{
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    margin: 0 20px;
+/* Alteração da Gabriele: ajuste intermediário antes do menu mobile */
+@media (max-width: 1180px){
+    .topo > .padrao{
+        grid-template-columns: 205px minmax(0, 1fr);
+        column-gap: 24px;
+    }
+
+    .topo .marca a{
+        width: 200px;
+    }
+
+    .topo .menu{
+        column-gap: 18px;
+    }
+
+    .topo .menu > ul:first-of-type{
+        gap: 17px;
+    }
+
+    .topo .menu ul li a{
+        font-size: 20px;
+    }
+
+    .topo .menu > .redes-sociais{
+        gap: 9px;
+    }
+
+    .topo .menu > .redes-sociais li{
+        width: 32px;
+        height: 32px;
+    }
+
+    .topo .contato a{
+        min-height: 42px;
+        padding: 0 16px;
+        font-size: 17px;
+    }
 }
 
-.redes-sociais li{
-    width: 24px;
-    background-color: var(--cor-verde-padrao);
-    border-radius: 50px;
+/* no mobile a estrutura do menu continua sendo controlada pelo responsivo.css */
+@media (max-width: 900px){
+    .topo > .padrao{
+        min-height: 92px;
+        display: flex;
+        justify-content: space-between;
+    }
 
-    transition: 
-        transform .3s ease,
-        background-color .3s ease,
-        box-shadow .3s ease;
-}
+    .topo .dropdown .submenu{
+        position: static;
+        min-width: 100%;
+        transform: none;
+        margin-top: 8px;
+        box-shadow: none;
+        border-radius: 14px;
+    }
 
-.redes-sociais li:hover{
-    transform: translateY(-3px) scale(1.12);
-    background-color: var(--cor-verde-claro);
-    box-shadow: 0px 5px 10px var(--cor-verde-escuro);
-}
+    .topo .dropdown:hover .submenu{
+        transform: none;
+    }
 
-.menu .redes-sociais li a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 24px;
-    margin: 0;
-}
-
-.redes-sociais img{
-    width: 18px;
-    display: block;
-}
-
-.contato{
-    display: flex;
-    font-size: 26px;
-    font-family: var(--fonte-texto);
-    font-weight: 500;
-    margin-left: 100px;
-}
-
-.contato a{
-    color: var(--cor-cinza-claro);
-    background-color: var(--cor-marrom-avermelhado);
-    padding: 10px 10px;
-    border-radius: 20px;
-    border: solid 2px var(--cor-marrom-acinzentado);
-    text-decoration: none;
-
-    display: inline-block;
-
-    transition: 
-        transform .3s ease,
-        box-shadow .3s ease;
-}
-
-.contato a:hover{
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+    .topo .dropdown .submenu::before{
+        display: none;
+    }
 }
 
 /* Banner */
@@ -471,26 +625,6 @@ html{
     overflow: hidden;
 
     transition: transform .35s ease;
-}
-
-#servico2{
-    background-image: url(../assets/servicos2.png);
-}
-
-#servico3{
-    background-image: url(../assets/servicos3.png);
-}
-
-#servico4{
-    background-image: url(../assets/servicos4.png);
-}
-
-#servico5{
-    background-image: url(../assets/servicos5.png);
-}
-
-#servico6{
-    background-image: url(../assets/servicos6.png);
 }
 
 .ser-cards article::before{
@@ -2352,304 +2486,7 @@ html{
 }
 
 /* Alteração da Gabriele: responsividade do banner e do parallax centralizada em css/responsivo.css */
-/* Alteração da Gabriele: refinamento geral do topo mantendo classes, estrutura e identidade visual */
-.topo {
-    background-color: var(--cor-verde-escuro);
-    position: relative;
-    z-index: 999;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
-}
-
-/* Alteração da Gabriele: ajuste do container principal do topo para alinhar logo, menu e botão */
-.topo > .padrao {
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-}
-
-/* Alteração da Gabriele: organização do menu principal para ficar mais premium e alinhado */
-.menu {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 20px;
-    flex: 1;
-    margin: 0;
-}
-
-.menu > ul:first-of-type {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin: 0;
-    padding: 0;
-}
-
-.menu ul li {
-    position: relative;
-}
-
-/* Alteração da Gabriele: refinamento dos links do menu principal */
-.menu ul li a {
-    margin: 0;
-    padding: 10px 0;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 22px;
-    line-height: 1;
-    font-family: var(--fonte-titulo);
-    color: var(--cor-cinza-claro);
-    text-decoration: none;
-    transition:
-        color 0.3s ease,
-        transform 0.3s ease;
-}
-
-.menu ul li a:hover,
-.menu ul li .botao-ativo {
-    color: var(--cor-verde-claro);
-}
-
-.menu ul li a:hover {
-    transform: translateY(-2px);
-}
-
-/* Alteração da Gabriele: ajuste do ícone do submenu para acompanhar o hover */
-.dropdown > a i {
-    font-size: 15px;
-    color: var(--cor-cinza-claro);
-    transition:
-        transform 0.3s ease,
-        color 0.3s ease;
-}
-
-.dropdown:hover > a i {
-    transform: rotate(180deg);
-    color: var(--cor-verde-claro);
-}
-
-/* Alteração da Gabriele: submenu redesenhado para ficar mais largo, legível e elegante */
-.dropdown .submenu {
-    min-width: 285px;
-    top: calc(100% + 16px);
-    left: 50%;
-    transform: translate(-50%, 10px);
-    padding: 12px;
-    display: block;
-    opacity: 0;
-    visibility: hidden;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.96);
-    border: 1px solid rgba(149, 177, 89, 0.28);
-    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.26);
-    z-index: 1000;
-    transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease,
-        transform 0.3s ease;
-}
-
-/* Alteração da Gabriele: seta visual do submenu para integrar com o topo */
-.dropdown .submenu::before {
-    content: "";
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    width: 16px;
-    height: 16px;
-    background: rgba(255, 255, 255, 0.96);
-    border-left: 1px solid rgba(149, 177, 89, 0.28);
-    border-top: 1px solid rgba(149, 177, 89, 0.28);
-    transform: translateX(-50%) rotate(45deg);
-}
-
-/* Alteração da Gabriele: abertura suave do submenu */
-.dropdown:hover .submenu {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, 0);
-}
-
-/* Alteração da Gabriele: itens do submenu com leitura melhor e sem quebra estranha */
-.dropdown .submenu li {
-    display: block;
-    width: 100%;
-}
-
-.dropdown .submenu li a {
-    width: 100%;
-    min-height: 44px;
-    padding: 11px 14px;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border-radius: 12px;
-    font-size: 16px;
-    line-height: 1.25;
-    font-family: var(--fonte-texto);
-    font-weight: 600;
-    color: var(--cor-verde-escuro);
-    text-align: left;
-    white-space: normal;
-    transition:
-        background-color 0.3s ease,
-        color 0.3s ease,
-        transform 0.3s ease,
-        padding-left 0.3s ease;
-}
-
-.dropdown .submenu li a:hover {
-    background-color: rgba(149, 177, 89, 0.16);
-    color: var(--cor-marrom-avermelhado);
-    transform: none;
-    padding-left: 18px;
-}
-
-/* Alteração da Gabriele: ajuste das redes sociais no topo para ficarem alinhadas e proporcionais */
-.menu > .redes-sociais {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
-}
-
-.menu > .redes-sociais li {
-    width: 34px;
-    height: 34px;
-    margin: 0;
-    background-color: rgba(149, 177, 89, 0.35);
-    border: 1px solid rgba(217, 217, 217, 0.16);
-    border-radius: 50%;
-    transition:
-        transform 0.3s ease,
-        background-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.menu > .redes-sociais li:hover {
-    transform: translateY(-3px);
-    background-color: var(--cor-verde-claro);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22);
-}
-
-.menu .redes-sociais li a {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.menu .redes-sociais img {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
-}
-
-/* Alteração da Gabriele: botão de contato do topo mais elegante e melhor alinhado */
-.contato {
-    margin-left: 0;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-.contato a {
-    min-height: 46px;
-    padding: 0 20px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    border: 1.5px solid rgba(217, 217, 217, 0.32);
-    background-color: var(--cor-marrom-avermelhado);
-    color: var(--cor-cinza-claro);
-    font-size: 20px;
-    font-family: var(--fonte-texto);
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 14px 28px rgba(140, 73, 58, 0.24);
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background-color 0.3s ease;
-}
-
-.contato a:hover {
-    transform: translateY(-3px);
-    background-color: #a45444;
-    box-shadow: 0 20px 34px rgba(0, 0, 0, 0.26);
-}
-
-/* Alteração da Gabriele: ajuste do topo fixo para manter o mesmo acabamento visual ao rolar */
-.menu-fixo {
-    background-color: rgba(52, 64, 27, 0.96);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
-}
-
-/* Alteração da Gabriele: responsividade do topo sem alterar classes ou estrutura */
-@media (max-width: 1180px) {
-    .topo > .padrao {
-        gap: 22px;
-    }
-
-    .menu {
-        gap: 20px;
-    }
-
-    .menu > ul:first-of-type {
-        gap: 16px;
-    }
-
-    .menu ul li a {
-        font-size: 22px;
-    }
-
-    .contato a {
-        font-size: 21px;
-        padding: 0 20px;
-    }
-}
-
-@media (max-width: 900px) {
-    .topo > .padrao {
-        min-height: 92px;
-    }
-
-    .dropdown .submenu {
-        position: static;
-        min-width: 100%;
-        transform: none;
-        margin-top: 8px;
-        box-shadow: none;
-        border-radius: 14px;
-    }
-
-    .dropdown:hover .submenu {
-        transform: none;
-    }
-
-    .dropdown .submenu::before {
-        display: none;
-    }
-}
-
-@media (max-width: 600px) {
-    .contato a {
-        min-height: 46px;
-        font-size: 19px;
-    }
-}
+/* Alteração da Gabriele: topo consolidado no início do arquivo para evitar regras duplicadas */
 
 /* III --------------------- III */
 /* ---- PÁGINA SOBRE ABAIXO ---- */
@@ -3193,3 +3030,4 @@ html{
     background-color: #ffffff;
     box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
 }
+

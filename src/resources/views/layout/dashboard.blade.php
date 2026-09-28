@@ -21,15 +21,10 @@
 
             {{-- Conteúdo específico enviado por cada página administrativa. --}}
             <main class="vs-admin-main">
-                {{-- Cabeçalho opcional; as listagens o ocultam para não duplicar seus títulos. --}}
-                @if (trim($__env->yieldContent('show-page-header', 'true')) !== 'false')
-                    <div class="vs-admin-heading border-bottom pb-3 mb-4">
-                        <h1 class="h3 mb-0">@yield('title', 'Painel administrativo')</h1>
-                    </div>
-                @endif
                 {{-- Mensagens de retorno das operações administrativas. --}}
-                @if (session('sucesso')) <div class="alert alert-success">{{ session('sucesso') }}</div> @endif
-                @if (session('erro')) <div class="alert alert-danger">{{ session('erro') }}</div> @endif
+                {{-- Alteração da Gabriele - avisos somem após alguns segundos para não ocupar a tela. --}}
+                @if (session('sucesso')) <div class="container-fluid admin-flash-message" data-auto-dismiss><div class="alert alert-success alert-dismissible fade show" role="alert">{{ session('sucesso') }}</div></div> @endif
+                @if (session('erro')) <div class="container-fluid admin-flash-message" data-auto-dismiss><div class="alert alert-danger alert-dismissible fade show" role="alert">{{ session('erro') }}</div></div> @endif
                 @yield('content')
             </main>
         </div>
