@@ -127,7 +127,7 @@ Route::middleware('auth')->group(function () {
 
 
             
-            Route::put('/agendamento/{id}', [AgendamentoController::class, 'update'])
+            Route::put('/agendamento/{id?}', [AgendamentoController::class, 'update'])
                 ->name('agendamento.update');
 
 

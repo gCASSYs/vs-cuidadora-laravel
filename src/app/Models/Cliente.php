@@ -29,4 +29,5 @@ class Cliente extends Model{
         return $this->hasMany(Agendamento::class, 'id_cliente', 'id_cliente');
     }
 
+
 }

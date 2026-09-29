@@ -69,4 +69,9 @@ class Idoso extends Model
             'id_cliente'
         );
     }
+
+    public function IdosoCliente()
+    {
+        return $this->hasMany(Idoso::class, 'id_idoso', 'id_idoso');
+    }
 }
