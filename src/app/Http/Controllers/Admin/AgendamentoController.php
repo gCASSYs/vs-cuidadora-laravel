@@ -58,7 +58,7 @@ class AgendamentoController extends Controller
             'status_agendamento_cliente' => $agendamento->status_agendamento_cliente,
         ], $dados);
 
-
+        $agendamento->update($dados);
 
         return redirect()
             ->route('admin.agendamento.index')

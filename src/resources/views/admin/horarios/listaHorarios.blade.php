@@ -163,7 +163,7 @@
 
                                         <tr
                                             class="horario-row"
-                                            data-status="{{ $lista->status_horarios }}">
+                                            data-telefone="{{ strtolower($lista->telefone_horarios) }}">
 
 
                                             <td>

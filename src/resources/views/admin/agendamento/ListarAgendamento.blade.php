@@ -165,6 +165,7 @@
                                         <tr
                                             class="agendamento-row"
                                             data-dia="{{ strtolower($lista->dia_agendamento_cliente) }}"
+                                            data-nome="{{ strtolower($lista->AgendamentoCliente?->nome_cliente ?? '') }}"
                                             data-status="{{ $lista->status_agendamento_cliente }}">
 
 
@@ -915,8 +916,8 @@
 
         linhas.forEach(function(linha) {
 
-            const titulo =
-                linha.dataset.titulo;
+            const nome =
+                linha.dataset.nome;
 
 
             const status =
@@ -925,7 +926,7 @@
 
             // Verifica se o título contém o texto pesquisado
             const encontrouPesquisa =
-                titulo.includes(pesquisa);
+                nome.includes(pesquisa);
 
 
             // Verifica o status

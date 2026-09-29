@@ -278,7 +278,7 @@ Route::middleware('auth')->group(function () {
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Login | Casa do Barista</title>
+    <title>Login | VS cuidadora</title>
 
     <link
         rel="stylesheet"
@@ -296,7 +296,7 @@ Route::middleware('auth')->group(function () {
 
                 <img
                     src="{{ asset('barista/img/logo.png') }}"
-                    alt="Casa do Barista"
+                    alt="VS cuidadora"
                 >
 
             </div>
@@ -410,7 +410,7 @@ Route::middleware('auth')->group(function () {
             <div class="login-footer">
 
                 <p>
-                    Casa do Barista
+                   VS cuidadora
                 </p>
 
                 <small>
