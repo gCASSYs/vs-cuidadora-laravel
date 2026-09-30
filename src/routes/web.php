@@ -287,6 +287,15 @@ Route::middleware('auth')->group(function () {
             Route::get('/banners-secao', [BannerSecaoController::class, 'index'])
                 ->name('banner-secao.index');
 
+            Route::post('/banners-secao', [BannerSecaoController::class, 'store'])
+                ->name('banner-secao.store');
+
+            Route::put('/banners-secao/{id}', [BannerSecaoController::class, 'update'])
+                ->name('banner-secao.update');
+
+            Route::patch('/banners-secao/{id}', [BannerSecaoController::class, 'status'])
+                ->name('banner-secao.status');
+
 
             /*
             |--------------------------------------------------------------------------

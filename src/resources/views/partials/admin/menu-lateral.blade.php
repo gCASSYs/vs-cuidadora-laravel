@@ -63,10 +63,10 @@
         </a>
 
 
-        {{-- Agendamento ainda não está pronto --}}
         <a
-            class="nav-link text-white"
-            href="#"
+            class="nav-link text-white
+            {{ request()->routeIs('admin.agendamento.*') ? 'bg-secondary rounded' : '' }}"
+            href="{{ route('admin.agendamento.index') }}"
         >
             Agendamentos
         </a>
