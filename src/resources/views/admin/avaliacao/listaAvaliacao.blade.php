@@ -635,7 +635,7 @@
 
         document
           .getElementById('editar_mensagem_avaliacao')
-          .src = imagem;
+          .value = depoimento;
 
         document
           .getElementById('editar_nome_cliente')
@@ -651,7 +651,7 @@
 
         document
           .getElementById('formEditarAvaliacao')
-          .action = '/admin/avaliacao/' + id;
+          .action = '/admin/depoimentos/' + id;
 
 
         // Limpa uma nova imagem selecionada anteriormente

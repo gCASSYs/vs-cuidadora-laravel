@@ -124,10 +124,6 @@ Route::middleware('auth')->group(function () {
             Route::get('/clientes', [ClienteController::class, 'index'])
                 ->name('cliente.index');
 
-            // Alteração de André - cadastrar cliente
-            Route::post('/clientes', [ClienteController::class, 'store'])
-                ->name('cliente.store');
-
             // Alteração de André - atualizar cliente
             Route::put('/clientes/{id}', [ClienteController::class, 'update'])
                 ->name('cliente.update');
@@ -177,6 +173,9 @@ Route::middleware('auth')->group(function () {
             Route::patch('/agendamento/{id}', [AgendamentoController::class, 'status'])
                 ->name('agendamento.status');
 
+            Route::put('/agendamento/{id}', [AgendamentoController::class, 'update'])
+                ->name('agendamento.update');
+
 
             /*
             |--------------------------------------------------------------------------
@@ -211,6 +210,12 @@ Route::middleware('auth')->group(function () {
 
             Route::get('/depoimentos', [AvaliacaoController::class, 'index'])
                 ->name('avaliacao.index');
+
+            Route::put('/depoimentos/{id}', [AvaliacaoController::class, 'update'])
+                ->name('avaliacao.update');
+
+            Route::patch('/depoimentos/{id}', [AvaliacaoController::class, 'status'])
+                ->name('avaliacao.status');
 
 
             /*
@@ -350,6 +355,15 @@ Route::middleware('auth')->group(function () {
 
             Route::get('/horarios', [HorariosController::class, 'index'])
                 ->name('horarios.index');
+
+            Route::post('/horarios', [HorariosController::class, 'store'])
+                ->name('horarios.store');
+
+            Route::put('/horarios/{id}', [HorariosController::class, 'update'])
+                ->name('horarios.update');
+
+            Route::patch('/horarios/{id}', [HorariosController::class, 'status'])
+                ->name('horarios.status');
 
 
             /*

@@ -19,6 +19,35 @@ class AvaliacaoController extends Controller
         return view('admin.avaliacao.index', compact('listaAvaliacao'));
     }
 
+    public function update(Request $request, int $id)
+    {
+        $dados = $request->validate([
+            'titulo_avaliacao' => 'required|string|max:35',
+            'mensagem_avaliacao' => 'required|string|max:255',
+            'estrela_avaliacao' => 'required|string|max:35',
+            'status_avaliacao' => 'required|in:ATIVO,INATIVO',
+            'img_avaliacao' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+        ]);
+
+        $avaliacao = Avaliacao::findOrFail($id);
+        $campos = collect($dados)->except('img_avaliacao')->all();
+
+        if ($request->hasFile('img_avaliacao')) {
+            $imagem = $request->file('img_avaliacao');
+            $nome = Str::slug(pathinfo($imagem->getClientOriginalName(), PATHINFO_FILENAME))
+                . '_' . $avaliacao->id_avaliacao . '.' . $imagem->extension();
+            $pasta = public_path('vs-cuidadora/assets/avaliacao');
+            File::ensureDirectoryExists($pasta);
+            $imagem->move($pasta, $nome);
+            $campos['img_avaliacao'] = 'avaliacao/' . $nome;
+        }
+
+        $avaliacao->update($campos);
+
+        return Redirect()->route('admin.avaliacao.index')
+            ->with('sucesso', 'Avaliação atualizada com sucesso!');
+    }
+
    
   
     public function status(int $id){

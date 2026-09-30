@@ -266,7 +266,7 @@
                                                         class="btn btn-outline-success btn-status-banner"
                                                         title="Ativar banner"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#modalStatusBanner"
+                                                        data-bs-target="#modalStatusAgendamento"
 
                                                         data-url="{{ route('admin.agendamento.status', $lista->id_agendamento_cliente) }}"
 
@@ -379,7 +379,7 @@
 {{-- Alteração da Gabriele - modal único de edição --}}
 <div
     class="modal fade"
-    id="modalEditarBanner"
+    id="modalEditarAgendamento"
     tabindex="-1"
     aria-hidden="true">
 
@@ -391,7 +391,7 @@
             <div class="modal-header">
 
                 <h5 class="modal-title">
-                    Editar Banner
+                    Editar agendamento
                 </h5>
 
                 <button
@@ -403,7 +403,7 @@
 
 
             <form
-                id="formEditarBanner"
+                id="formEditarAgendamento"
                 method="POST"
                 enctype="multipart/form-data">
 
@@ -417,13 +417,13 @@
                     <div class="mb-3">
 
                         <label class="form-label">
-                            Título do banner
+                            Dia
                         </label>
 
                         <input
-                            type="text"
-                            id="editar_titulo_banner"
-                            name="titulo_banner"
+                            type="date"
+                            id="editar_dia_agendamento"
+                            name="dia_agendamento_cliente"
                             class="form-control"
                             maxlength="35"
                             required>
@@ -434,51 +434,19 @@
                     <div class="mb-3">
 
                         <label class="form-label">
-                            Imagem atual
+                            Horário
                         </label>
 
                         <div class="text-center">
 
-                            <img
-                                id="editar_imagem_atual"
-                                src=""
-                                alt="Imagem atual"
-                                class="img-fluid rounded"
-                                style="max-height: 220px;">
+                            <input
+                                type="time"
+                                id="editar_horario_agendamento"
+                                name="horario_agendamento_cliente"
+                                class="form-control"
+                                required>
 
                         </div>
-
-                    </div>
-
-
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Nova imagem
-                        </label>
-
-                        <input
-                            type="file"
-                            id="editar_img_banner"
-                            name="img_banner"
-                            class="form-control"
-                            accept=".jpg,.jpeg,.png,.webp">
-
-                        <small class="text-muted">
-                            Deixe vazio para manter a imagem atual.
-                        </small>
-
-                    </div>
-
-
-                    <div class="mb-3 text-center">
-
-                        <img
-                            id="previewBannerEditar"
-                            src=""
-                            alt="Prévia"
-                            class="img-fluid rounded d-none"
-                            style="max-height: 220px;">
 
                     </div>
 
@@ -490,8 +458,8 @@
                         </label>
 
                         <select
-                            id="editar_status_banner"
-                            name="status_banner"
+                            id="editar_status_agendamento"
+                            name="status_agendamento_cliente"
                             class="form-select">
 
                             <option value="ATIVO">
@@ -534,19 +502,30 @@
 
 </div>
 
+<script>
+document.querySelectorAll('.btn-editar-banner').forEach(function (botao) {
+    botao.addEventListener('click', function () {
+        document.getElementById('editar_dia_agendamento').value = this.dataset.dia;
+        document.getElementById('editar_horario_agendamento').value = this.dataset.horario;
+        document.getElementById('editar_status_agendamento').value = this.dataset.status;
+        document.getElementById('formEditarAgendamento').action = '/admin/agendamento/' + this.dataset.id;
+    });
+});
+</script>
+
 
 
 {{-- Alteração da Gabriele - modal de confirmação para status --}}
 <div
     class="modal fade"
-    id="modalStatusBanner"
+    id="modalStatusAgendamento"
     tabindex="-1"
     aria-hidden="true">
 
     <div class="modal-dialog">
 
         <form
-            id="formStatusBanner"
+            id="formStatusAgendamento"
             method="POST">
 
             @csrf
@@ -606,3 +585,11 @@
     </div>
 
 </div>
+
+<script>
+document.querySelectorAll('.btn-status-banner').forEach(function (botao) {
+    botao.addEventListener('click', function () {
+        document.getElementById('formStatusAgendamento').action = this.dataset.url;
+    });
+});
+</script>

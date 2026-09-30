@@ -25,4 +25,18 @@ class AgendamentoController extends Controller
             ->route('admin.agendamento.index')
             ->with('sucesso', 'Status do agendamento atualizado com sucesso!');
     }
+
+    public function update(\Illuminate\Http\Request $request, int $id)
+    {
+        $dados = $request->validate([
+            'dia_agendamento_cliente' => 'required|date',
+            'horario_agendamento_cliente' => 'required|string|max:50',
+            'status_agendamento_cliente' => 'required|in:ATIVO,INATIVO',
+        ]);
+
+        Agendamento::findOrFail($id)->update($dados);
+
+        return redirect()->route('admin.agendamento.index')
+            ->with('sucesso', 'Agendamento atualizado com sucesso!');
+    }
 }

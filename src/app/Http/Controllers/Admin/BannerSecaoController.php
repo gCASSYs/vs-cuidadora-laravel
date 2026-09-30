@@ -41,7 +41,7 @@ class BannerSecaoController extends Controller
 
         // CARREGAR NOVA IMAGEM
 
-        $nomeImg = Str::slug($dados['img_banner_secao'], '_')
+        $nomeImg = Str::slug(pathinfo($imagem->getClientOriginalName(), PATHINFO_FILENAME), '_')
             . '_'
             . $bannerSecao->id_banner_secao
             . '.'
@@ -64,7 +64,7 @@ class BannerSecaoController extends Controller
         $bannerSecao->save();
 
         return redirect()
-        ->route('admin.bannerSecao.index')
+        ->route('admin.banner-secao.index')
         ->with('sucesso', 'Banner cadastrado com sucesso!');
 
     }
@@ -95,7 +95,7 @@ class BannerSecaoController extends Controller
             $imagem = $request->file('img_banner_secao');
 
             
-            $nomeImg = Str::slug($dados['img_banner_secao'], '_')
+            $nomeImg = Str::slug(pathinfo($imagem->getClientOriginalName(), PATHINFO_FILENAME), '_')
                 . '_'
                 . $bannerSecao->id_banner_secao
                 . '.'
@@ -107,7 +107,7 @@ class BannerSecaoController extends Controller
 
             // CAMINHO ANTIGO
 
-            $imagemAntiga = public_path('vs-cuiadadora/assets/banner-secao' . $bannerSecao->img_banner_secao);
+            $imagemAntiga = public_path('vs-cuidadora/assets/' . $bannerSecao->img_banner_secao);
 
             //  REMOVER A IMAGEM
 
@@ -132,7 +132,7 @@ class BannerSecaoController extends Controller
         ]);
 
         return redirect()
-        ->route('admin.bannerSecao.index')
+        ->route('admin.banner-secao.index')
         ->with('sucesso', 'Banner ataulizado com sucesso!');
         
     }
@@ -162,7 +162,7 @@ class BannerSecaoController extends Controller
 
     
         return redirect()
-            ->route('admin.bannerSecao.index')
+            ->route('admin.banner-secao.index')
             ->with('sucesso', $mensagem);
     }
 }

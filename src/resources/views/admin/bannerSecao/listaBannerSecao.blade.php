@@ -265,7 +265,7 @@
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#modalStatusBannerSecao"
 
-                                                        data-url="{{ route('admin.bannerSecao.status', $lista->id_banner_secao) }}"
+                                                        data-url="{{ route('admin.banner-secao.status', $lista->id_banner_secao) }}"
 
                                                         data-status="ATIVO">
 
@@ -283,7 +283,7 @@
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#modalStatusBannerSecao"
 
-                                                        data-url="{{ route('admin.bannerSecao.status', $lista->id_banner_secao) }}"
+                                                        data-url="{{ route('admin.banner-secao.status', $lista->id_banner_secao) }}"
 
                                                         data-status="INATIVO">
 
@@ -413,7 +413,7 @@
 
 
             <form
-                action="{{ route('admin.bannerSecao.store') }}"
+                action="{{ route('admin.banner-secao.store') }}"
                 method="POST"
                 enctype="multipart/form-data">
 
@@ -868,7 +868,7 @@
 
                 document
                     .getElementById('formEditarBanner')
-                    .action = '/admin/banner-secao/' + id;
+                    .action = '/admin/banners-secao/' + id;
 
 
                 // Limpa uma nova imagem selecionada anteriormente
