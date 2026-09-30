@@ -7,6 +7,7 @@ use App\Models\Banner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class BannerController extends Controller
 {
@@ -151,18 +152,22 @@ class BannerController extends Controller
         // Busca o banner pelo ID
         $banner = Banner::findOrFail($id);
 
+        // Faz todo o processo dentro do DB transaction por segurança
+            $novoStatus = DB::transaction(function () use ($id) {
+                // lockForUpdate = Bloqueia que dois processos modifiquem o mesmo registro no banco
+                $banner = Banner::lockForUpdate()->findOrFail($id);
+                $novoStatus = $banner->status_banner === 'ATIVO' ? 'INATIVO' : 'ATIVO';
 
-        // Alteração da Gabriele - troca o status atual
-        if ($banner->status_banner === 'ATIVO') {
+                $banner->update(['status_banner' => $novoStatus]);
 
-            $banner->status_banner = 'INATIVO';
-            $mensagem = 'Banner desativado com sucesso!';
+                if ($novoStatus === 'ATIVO') {
+                    $this->ativarBanner($banner);
+                }
 
-        } else {
+                return $novoStatus;
+            });
 
-            $banner->status_banner = 'ATIVO';
-            $mensagem = 'Banner ativado com sucesso!';
-        }
+            $mensagem = $novoStatus === 'ATIVO' ? 'Logo ATIVADA com sucesso!' : 'Logo DESATIVADA com sucesso!';
 
 
         // Salva a alteração
@@ -172,5 +177,18 @@ class BannerController extends Controller
         return redirect()
             ->route('admin.banner.index')
             ->with('sucesso', $mensagem);
+    }
+
+    private function ativarBanner(Banner $banner): void
+    {
+
+        Banner::where('id_banner', '!=', $banner->id_banner)
+            ->where('status_banner', 'ATIVO')
+            ->update(['status_banner' => 'INATIVO']);
+
+        /* Se a logo principal não estiver ativa ? ative ela */
+        if ($banner->status_banner !== 'ATIVO') {
+            $banner->update(['status_banner' => 'ATIVO']);
+        }
     }
 }
