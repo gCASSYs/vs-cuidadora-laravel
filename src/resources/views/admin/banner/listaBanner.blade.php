@@ -778,7 +778,7 @@
                     <button
                         type="submit"
                         id="btnConfirmarStatusBanner"
-                        class="btn"
+                        class="btn btn-success"
                     >
                         Confirmar
                     </button>
@@ -952,7 +952,7 @@
 
 
             // Banner está ativo e será desativado
-            if (status === 'ATIVO') {
+            if (status_banner_secao === 'ATIVO') {
 
                 titulo.textContent =
                     'Desativar Banner';

@@ -1,14 +1,19 @@
 <footer class="rodapé">
     <div class="padrao rodape-grid">
         <div class="left">
+
+        
             <!-- Alteração da Gabriele: texto do rodapé adaptado para apresentar a Vânia de forma breve e profissional -->
-            <h2>{{ $SobreResumo->titulo_sobre_resumo }}</h2>
+
+            
+            <h2></h2>
 
             <p>
-                {{ $SobreResumo->texto_sobre_resumo }}
+                
             </p>
             
             <a href="{{ route('home') }}#form-contat">Fale com a Vânia</a>
+            
         </div>
 
         <div class="center">

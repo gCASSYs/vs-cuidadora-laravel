@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\ServicoController as AdminServicoController;
 use App\Http\Controllers\Admin\BannerSecaoController;
 use App\Http\Controllers\Admin\LogoController;
 use App\Http\Controllers\Admin\ContatoController;
+use App\Http\Controllers\Admin\AgendamentoController;
 use App\Http\Controllers\Admin\HorariosController;
 use App\Http\Controllers\Admin\ClienteController;
 
@@ -162,6 +163,19 @@ Route::middleware('auth')->group(function () {
             // ativa ou desativa um idoso
             Route::patch('/idosos/{id}', [IdosoController::class, 'status'])
                 ->name('idoso.status');
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | AGENDAMENTOS
+            |--------------------------------------------------------------------------
+            */
+
+            Route::get('/agendamento', [AgendamentoController::class, 'agendamento'])
+                ->name('agendamento.index');
+
+            Route::patch('/agendamento/{id}', [AgendamentoController::class, 'status'])
+                ->name('agendamento.status');
 
 
             /*
