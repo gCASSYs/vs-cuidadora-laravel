@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 class AvaliacaoController extends Controller
 {
 
-    public function avaliacao()
+    public function index()
     {
         $listaAvaliacao = Avaliacao::orderByDesc('id_avaliacao')
             ->get();
